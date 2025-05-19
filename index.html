@@ -1,22 +1,37 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
   <title>Nonsense Generator</title>
-  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <h1>Nonsense Generator</h1>
-    <p>Inserisci una frase da analizzare:</p>
-    
-    <textarea id="inputText" placeholder="Scrivi qui la tua frase..."></textarea>
-    <button onclick="analyzeText()">Analizza</button>
 
-    <div id="output"></div>
-  </div>
+  <h1>Nonsense Generator</h1>
 
-  <script src="script.js"></script>
+  <!-- FORM DI INPUT + BOTTONE -->
+  <input type="text" id="sentence" placeholder="Inserisci una frase" />
+  <button onclick="analyze()">Analizza</button>
+
+  <!-- AREA DI OUTPUT -->
+  <pre id="output"></pre>
+
+  <!-- SCRIPT JS -->
+  <script>
+    async function analyze() {
+        const input = document.getElementById("sentence").value;
+        const response = await fetch("http://localhost:8080/api/analyze", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ sentence: input })
+        });
+
+        const data = await response.json();
+        console.log(data);
+        document.getElementById("output").textContent = JSON.stringify(data, null, 2);
+    }
+  </script>
+
 </body>
 </html>
