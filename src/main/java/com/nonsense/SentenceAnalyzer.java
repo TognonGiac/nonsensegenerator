@@ -1,9 +1,12 @@
+package com.nonsense;
+
 import com.google.cloud.language.v1.*;
 import com.google.cloud.language.v1.Document.Type;
 import com.google.protobuf.*;
 
 import java.io.IOException;
 import java.util.*;
+
 import io.github.cdimascio.dotenv.Dotenv;
 
 public class SentenceAnalyzer {
@@ -38,17 +41,11 @@ public class SentenceAnalyzer {
             PartOfSpeech.Tag tag = token.getPartOfSpeech().getTag();
 
             switch (tag) {
-                case NOUN:
-                    nouns.add(word);
-                    break;
-                case VERB:
-                    verbs.add(word);
-                    break;
-                case ADJ:
-                    adjectives.add(word);
-                    break;
-                default:
-                    break;
+                case NOUN -> nouns.add(word);
+                case VERB -> verbs.add(word);
+                case ADJ -> adjectives.add(word);
+                default -> {
+                }
             }
         }
 
