@@ -5,40 +5,43 @@
   <title>Nonsense Generator</title>
 </head>
 <body>
-
   <h1>Nonsense Generator</h1>
 
-  <!-- FORM DI INPUT + BOTTONE -->
+  <!-- Form -->
   <input type="text" id="sentence" placeholder="Inserisci una frase" />
-  <button onclick="analyze()">Analizza</button>
+  <input type="number" id="count" min="1" max="10" value="1" />
+  <button onclick="generate()">Genera</button>
 
-  <!-- AREA DI OUTPUT -->
-  <pre id="output"></pre>
+  <!-- Output -->
+  <ul id="output"></ul>
 
-  <!-- SCRIPT JS -->
+  <!-- Script -->
   <script>
-async function analyze() {
-    const input = document.getElementById("sentence").value;
-    const count = document.getElementById("count").value;
-    const response = await fetch("http://localhost:8080/api/analyze", {
+    async function generate() {
+      const sentence = document.getElementById("sentence").value;
+      const count = parseInt(document.getElementById("count").value);
+
+      const response = await fetch("http://localhost:8080/api/generate", {
         method: "POST",
         headers: {
-            "Content-Type": "application/json"
+          "Content-Type": "application/json"
         },
-        body: JSON.stringify({ sentence: input, count: count })
-    });
+        body: JSON.stringify({ sentence, count })
+      });
 
-    const data = await response.json();
-    const outputEl = document.getElementById("output");
-    if (data.sentences) {
-        outputEl.innerHTML = data.sentences.map(s => `<p>${s}</p>`).join("");
-    } else {
-        outputEl.textContent = "Errore: " + data.error;
+      const data = await response.json();
+      const output = document.getElementById("output");
+      output.innerHTML = "";
+
+      if (data.sentences) {
+        data.sentences.forEach(s => {
+          const li = document.createElement("li");
+          li.textContent = s;
+          output.appendChild(li);
+        });
+      } else {
+        output.textContent = "Errore: " + data.error;
+      }
     }
-}
-</script>
-
-<input type="text" id="sentence" placeholder="Inserisci una frase" />
-<input type="number" id="count" placeholder="Quante frasi?" value="1" min="1" />
-<button onclick="analyze()">Genera nonsense</button>
-<div id="output"></div>
+  </script>
+</body>
