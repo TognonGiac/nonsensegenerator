@@ -1,14 +1,25 @@
+package com.nonsense;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Map;
+
 public class Main {
-    public static void main(String[] args) throws IOException {
-        SentenceAnalyzer analyzer = new SentenceAnalyzer();
+    public static void main(String[] args) {
+        try {
+            SentenceAnalyzer analyzer = new SentenceAnalyzer();
+            String input = "The quick brown fox jumps over the lazy dog.";
 
-        String input = "The quick brown fox jumps over the lazy dog.";
-        Map<String, List<String>> result = analyzer.analyzeSyntax(input);
+            Map<String, List<String>> result = analyzer.analyzeSyntax(input);
 
-        System.out.println("Nouns: " + result.get("nouns"));
-        System.out.println("Verbs: " + result.get("verbs"));
-        System.out.println("Adjectives: " + result.get("adjectives"));
+            System.out.println("Nouns: " + result.get("nouns"));
+            System.out.println("Verbs: " + result.get("verbs"));
+            System.out.println("Adjectives: " + result.get("adjectives"));
 
-        analyzer.close();
+            analyzer.close();
+        } catch (IOException e) {
+            System.err.println("Errore durante l'analisi: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 }
