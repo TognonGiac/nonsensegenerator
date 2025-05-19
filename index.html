@@ -1,11 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <title>Test sito</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nonsense Generator</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1 style="color: green;">Il sito funziona!</h1>
-  <p>Hai pubblicato con successo su GitHub Pages ✅</p>
+  <div class="container">
+    <h1>Nonsense Generator</h1>
+    <p>Inserisci una frase da analizzare:</p>
+    
+    <textarea id="inputText" placeholder="Scrivi qui la tua frase..."></textarea>
+    <button onclick="analyzeText()">Analizza</button>
+
+    <div id="output"></div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
