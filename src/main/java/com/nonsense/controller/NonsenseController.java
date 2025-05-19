@@ -1,33 +1,31 @@
 package com.nonsense.controller;
 
 import com.nonsense.SentenceAnalyzer;
+import com.nonsense.service.NonsenseService;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @RestController
-@CrossOrigin
+@CrossOrigin // permette richieste da GitHub Pages
 @RequestMapping("/api")
 public class NonsenseController {
 
+    private final NonsenseService service = new NonsenseService();
+
     @PostMapping("/generate")
-    public Map<String, Object> generate(@RequestBody Map<String, Object> payload) {
+    public Map<String, Object> generateSentences(@RequestBody Map<String, Object> payload) {
         String sentence = (String) payload.get("sentence");
-        int count = (int) payload.getOrDefault("count", 1);
+        int count = (int) payload.get("count");
 
         Map<String, Object> response = new HashMap<>();
-        List<String> results = new ArrayList<>();
 
         try {
-            SentenceAnalyzer analyzer = new SentenceAnalyzer();
-
-            for (int i = 0; i < count; i++) {
-                String generated = analyzer.generateSentence(sentence);
-                results.add(generated);
-            }
-
-            response.put("sentences", results);
+            List<String> generated = service.generateNonsenseSentences(sentence, count);
+            response.put("sentences", generated);
         } catch (IOException e) {
             response.put("error", e.getMessage());
         }
