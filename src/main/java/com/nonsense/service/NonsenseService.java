@@ -32,24 +32,32 @@ public class NonsenseService {
         SentenceAnalyzer analyzer = new SentenceAnalyzer();
         Map<String, List<String>> parts = analyzer.analyzeSyntax(sentence);
         analyzer.close();
-
+    
         List<String> nouns = parts.get("nouns");
         List<String> verbs = parts.get("verbs");
         List<String> adjectives = parts.get("adjectives");
-
-        // aggiorna dizionari globali
+    
         if (nouns != null) globalNouns.addAll(nouns);
         if (verbs != null) globalVerbs.addAll(verbs);
         if (adjectives != null) globalAdjectives.addAll(adjectives);
-
-        // salva su file (merge ed evita duplicati)
+    
         updateWordFile(NOUNS_FILE, nouns);
         updateWordFile(VERBS_FILE, verbs);
         updateWordFile(ADJECTIVES_FILE, adjectives);
-
-        return NonsenseGenerator.generateSentences(nouns, verbs, adjectives, count);
+    
+        List<String> generated = NonsenseGenerator.generateSentences(nouns, verbs, adjectives, count);
+    
+        List<String> filtered = new ArrayList<>();
+        for (String sentenceOut : generated) {
+            if (ToxicityChecker.isToxic(sentenceOut)) {
+                filtered.add("Frase non mostrata per la sua tossicità");
+            } else {
+                filtered.add(sentenceOut);
+            }
+        }
+    
+        return filtered;
     }
-
     private void updateWordFile(Path filePath, List<String> newWords) throws IOException {
         if (newWords == null || newWords.isEmpty()) return;
 
