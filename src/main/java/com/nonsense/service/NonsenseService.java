@@ -19,6 +19,10 @@ import com.nonsense.SentenceAnalyzer;
 import com.nonsense.NonsenseGenerator;
 import com.nonsense.util.ToxicityChecker;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+
+@Service
 public class NonsenseService {
 
     private static final Set<String> globalNouns = new HashSet<>();
@@ -29,8 +33,15 @@ public class NonsenseService {
     private static final Path VERBS_FILE = Paths.get("src/main/resources/data/verbs.txt");
     private static final Path ADJECTIVES_FILE = Paths.get("src/main/resources/data/adjectives.txt");
 
+    @Value("${google.api.key}")
+    private String apiKey;
+    
+    if (apiKey == null || apiKey.isBlank()) {
+        throw new IllegalStateException("API key non trovata: assicurati di avere GOOGLE_API_KEY nell'env");
+    }
+    
     public List<String> generateNonsenseSentences(String sentence, int count) throws IOException {
-        SentenceAnalyzer analyzer = new SentenceAnalyzer();
+        SentenceAnalyzer analyzer = new SentenceAnalyzer(apiKey);
         Map<String, List<String>> parts = analyzer.analyzeSyntax(sentence);
         analyzer.close();
 
@@ -47,12 +58,6 @@ public class NonsenseService {
         updateWordFile(ADJECTIVES_FILE, adjectives);
 
         List<String> generated = NonsenseGenerator.generateSentences(nouns, verbs, adjectives, count);
-
-        // Carica la API key dal file delle credenziali JSON (usando GOOGLE_API_KEY env var oppure direttamente path al file json se preferisci)
-        String apiKey = System.getenv("GOOGLE_API_KEY");
-        if (apiKey == null || apiKey.isBlank()) {
-            throw new IllegalStateException("API key non trovata: assicurati di avere GOOGLE_API_KEY nell'env");
-        }
 
         List<String> filtered = new ArrayList<>();
         for (String sentenceOut : generated) {
