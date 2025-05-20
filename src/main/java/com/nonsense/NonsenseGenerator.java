@@ -61,16 +61,27 @@ public class NonsenseGenerator {
     }
 
     private static String fillTemplate(String template, List<String> nouns, List<String> verbs, List<String> adjectives) {
-        return template
-                .replaceFirst("\\[noun\\]", pickRandom(nouns))
-                .replaceFirst("\\[verb\\]", pickRandom(verbs))
-                .replaceFirst("\\[adjective\\]", pickRandom(adjectives))
-                .replaceFirst("\\[noun\\]", pickRandom(nouns))
-                .replaceFirst("\\[adjective\\]", pickRandom(adjectives))
-                .replaceFirst("\\[noun\\]", pickRandom(nouns));
+        String sentence = template;
+        sentence = sentence.replaceFirst("\\[noun\\]", pickRandom(nouns));
+        sentence = sentence.replaceFirst("\\[verb\\]", pickRandom(verbs));
+        sentence = sentence.replaceFirst("\\[adjective\\]", pickRandom(adjectives));
+        sentence = sentence.replaceFirst("\\[noun\\]", pickRandom(nouns));
+        sentence = sentence.replaceFirst("\\[adjective\\]", pickRandom(adjectives));
+        sentence = sentence.replaceFirst("\\[noun\\]", pickRandom(nouns));
+        
+        // nuova gestione per [sentence]
+        if (sentence.contains("[sentence]")) {
+            sentence = sentence.replace("[sentence]", generateMiniSentence(nouns, verbs, adjectives));
+        }
+    
+        return sentence;
     }
 
     private static String pickRandom(List<String> list) {
         return list.get(rand.nextInt(list.size()));
+    }
+
+    private static String generateMiniSentence(List<String> nouns, List<String> verbs, List<String> adjectives) {
+        return "the " + pickRandom(adjectives) + " " + pickRandom(nouns) + " " + pickRandom(verbs);
     }
 }
