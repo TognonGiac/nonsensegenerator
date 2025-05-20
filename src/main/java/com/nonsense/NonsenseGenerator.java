@@ -1,45 +1,69 @@
 package com.nonsense;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.*;
 
 public class NonsenseGenerator {
 
-    private static final List<String> NOUNS_EXTRA = List.of("dragon", "pizza", "toaster", "mountain", "penguin");
-    private static final List<String> VERBS_EXTRA = List.of("jumps", "dances", "sings", "crashes", "melts");
-    private static final List<String> ADJECTIVES_EXTRA = List.of("weird", "purple", "noisy", "giant", "soft");
+    private static final List<String> nouns = new ArrayList<>();
+    private static final List<String> verbs = new ArrayList<>();
+    private static final List<String> adjectives = new ArrayList<>();
+    private static final List<String> templates = new ArrayList<>();
+    private static final Random rand = new Random();
 
-    private static final List<String> TEMPLATES = List.of(
-        "The [noun] [verb] the [adjective] [noun] in a [adjective] [noun].",
-        "A [adjective] [noun] [verb] over the [adjective] [noun].",
-        "In a [adjective] [noun], the [noun] [verb] the [adjective] [noun]."
-    );
+    static {
+        try {
+            loadList("/data/nouns.txt", nouns);
+            loadList("/data/verbs.txt", verbs);
+            loadList("/data/adjectives.txt", adjectives);
+            loadList("/data/sentence_structures.txt", templates);
+        } catch (IOException e) {
+            System.err.println("Errore nel caricamento dei file di parole/template: " + e.getMessage());
+        }
+    }
 
-    public static List<String> generateSentences(List<String> nouns, List<String> verbs, List<String> adjectives, int count) {
-        Random rand = new Random();
+    private static void loadList(String path, List<String> target) throws IOException {
+        try (BufferedReader reader = new BufferedReader(
+                new InputStreamReader(NonsenseGenerator.class.getResourceAsStream(path)))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if (!line.isBlank()) target.add(line.trim());
+            }
+        }
+    }
+
+    public static List<String> generateSentences(List<String> extraNouns, List<String> extraVerbs, List<String> extraAdjectives, int count) {
         List<String> allNouns = new ArrayList<>(nouns);
         List<String> allVerbs = new ArrayList<>(verbs);
         List<String> allAdjectives = new ArrayList<>(adjectives);
 
-        allNouns.addAll(NOUNS_EXTRA);
-        allVerbs.addAll(VERBS_EXTRA);
-        allAdjectives.addAll(ADJECTIVES_EXTRA);
+        if (extraNouns != null) allNouns.addAll(extraNouns);
+        if (extraVerbs != null) allVerbs.addAll(extraVerbs);
+        if (extraAdjectives != null) allAdjectives.addAll(extraAdjectives);
 
         List<String> results = new ArrayList<>();
         for (int i = 0; i < count; i++) {
-            String template = TEMPLATES.get(rand.nextInt(TEMPLATES.size()));
-            String sentence = template
-                    .replaceFirst("\\[noun\\]", pickRandom(allNouns, rand))
-                    .replaceFirst("\\[verb\\]", pickRandom(allVerbs, rand))
-                    .replaceFirst("\\[adjective\\]", pickRandom(allAdjectives, rand))
-                    .replaceFirst("\\[noun\\]", pickRandom(allNouns, rand))
-                    .replaceFirst("\\[adjective\\]", pickRandom(allAdjectives, rand))
-                    .replaceFirst("\\[noun\\]", pickRandom(allNouns, rand));
+            String template = templates.get(rand.nextInt(templates.size()));
+            String sentence = fillTemplate(template, allNouns, allVerbs, allAdjectives);
             results.add(sentence);
         }
+
         return results;
     }
 
-    private static String pickRandom(List<String> list, Random rand) {
+    private static String fillTemplate(String template, List<String> nouns, List<String> verbs, List<String> adjectives) {
+        return template
+                .replaceFirst("\\[noun\\]", pickRandom(nouns))
+                .replaceFirst("\\[verb\\]", pickRandom(verbs))
+                .replaceFirst("\\[adjective\\]", pickRandom(adjectives))
+                .replaceFirst("\\[noun\\]", pickRandom(nouns))
+                .replaceFirst("\\[adjective\\]", pickRandom(adjectives))
+                .replaceFirst("\\[noun\\]", pickRandom(nouns));
+    }
+
+    private static String pickRandom(List<String> list) {
         return list.get(rand.nextInt(list.size()));
     }
 }
