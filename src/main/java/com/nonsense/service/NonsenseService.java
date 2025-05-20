@@ -17,6 +17,7 @@ import java.util.stream.Collectors;
 
 import com.nonsense.SentenceAnalyzer;
 import com.nonsense.NonsenseGenerator;
+import com.nonsense.util.ToxicityChecker;
 
 public class NonsenseService {
 
