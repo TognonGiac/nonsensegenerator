@@ -27,7 +27,7 @@
            <artifactId>google-cloud-language</artifactId>
            <version>2.64.0</version> <!-- Versione che include moderateText -->
     </dependency>
-aaa
+            
     <!-- dotenv -->
     <dependency>
         <groupId>io.github.cdimascio</groupId>
