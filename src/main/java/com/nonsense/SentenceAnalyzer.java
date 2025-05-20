@@ -1,51 +1,69 @@
 package com.nonsense;
 
-import com.google.cloud.language.v1.*;
-import com.google.cloud.language.v1.Document.Type;
-import com.google.protobuf.*;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.*;
-
-import io.github.cdimascio.dotenv.Dotenv;
 
 public class SentenceAnalyzer {
 
-    private final LanguageServiceClient language;
+    private final String apiKey;
 
-    public SentenceAnalyzer() throws IOException {
-        Dotenv dotenv = Dotenv.load();
-        System.setProperty("GOOGLE_APPLICATION_CREDENTIALS", dotenv.get("GOOGLE_APPLICATION_CREDENTIALS"));
-        language = LanguageServiceClient.create();
+    public SentenceAnalyzer(String apiKey) {
+        if (apiKey == null || apiKey.isBlank()) {
+            throw new IllegalArgumentException("API key non valida");
+        }
+        this.apiKey = apiKey;
     }
 
-    public Map<String, List<String>> analyzeSyntax(String text) throws IOException {
-        Document doc = Document.newBuilder()
-                .setContent(text)
-                .setType(Type.PLAIN_TEXT)
-                .build();
+    public Map<String, List<String>> analyzeSyntax(String text) throws Exception {
+        String endpoint = "https://language.googleapis.com/v1/documents:analyzeSyntax?key=" + apiKey;
 
-        AnalyzeSyntaxRequest request = AnalyzeSyntaxRequest.newBuilder()
-                .setDocument(doc)
-                .setEncodingType(EncodingType.UTF8)
-                .build();
+        String body = """
+        {
+          "document": {
+            "type": "PLAIN_TEXT",
+            "content": "%s"
+          },
+          "encodingType": "UTF8"
+        }
+        """.formatted(text.replace("\"", "\\\""));
 
-        AnalyzeSyntaxResponse response = language.analyzeSyntax(request);
+        HttpURLConnection connection = (HttpURLConnection) new URL(endpoint).openConnection();
+        connection.setRequestMethod("POST");
+        connection.setDoOutput(true);
+        connection.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+
+        try (OutputStream os = connection.getOutputStream()) {
+            os.write(body.getBytes("UTF-8"));
+        }
+
+        InputStream is = connection.getInputStream();
+        String json;
+        try (Scanner scanner = new Scanner(is).useDelimiter("\\A")) {
+            json = scanner.hasNext() ? scanner.next() : "";
+        }
+
+        JSONObject response = new JSONObject(json);
+        JSONArray tokens = response.getJSONArray("tokens");
 
         List<String> nouns = new ArrayList<>();
         List<String> verbs = new ArrayList<>();
         List<String> adjectives = new ArrayList<>();
 
-        for (Token token : response.getTokensList()) {
-            String word = token.getText().getContent();
-            PartOfSpeech.Tag tag = token.getPartOfSpeech().getTag();
+        for (int i = 0; i < tokens.length(); i++) {
+            JSONObject token = tokens.getJSONObject(i);
+            String word = token.getJSONObject("text").getString("content");
+            String tag = token.getJSONObject("partOfSpeech").getString("tag");
 
             switch (tag) {
-                case NOUN -> nouns.add(word);
-                case VERB -> verbs.add(word);
-                case ADJ -> adjectives.add(word);
-                default -> {
-                }
+                case "NOUN" -> nouns.add(word);
+                case "VERB" -> verbs.add(word);
+                case "ADJ"  -> adjectives.add(word);
             }
         }
 
@@ -57,6 +75,7 @@ public class SentenceAnalyzer {
     }
 
     public void close() {
-        language.close();
+        // Nessuna risorsa da chiudere nel caso REST
     }
 }
+
