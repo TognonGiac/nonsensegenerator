@@ -36,7 +36,7 @@ public class NonsenseService {
     @Value("${google.api.key}")
     private String apiKey;
     
-    public List<String> generateNonsenseSentences(String sentence, int count) throws IOException {
+    public List<String> generateNonsenseSentences(String sentence, int count) throws Exception {
 
         if (apiKey == null || apiKey.isBlank()) {
             throw new IllegalStateException("API key non trovata: assicurati di avere GOOGLE_API_KEY nell'env");
