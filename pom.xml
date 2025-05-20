@@ -28,19 +28,27 @@
         <version>2.30.0</version>
     </dependency>
 
-    <!-- dotenv (facoltativo) -->
+    <!-- dotenv -->
     <dependency>
         <groupId>io.github.cdimascio</groupId>
         <artifactId>dotenv-java</artifactId>
         <version>3.0.0</version>
     </dependency>
+
+    <dependency>
+             <groupId>org.junit.jupiter</groupId>
+             <artifactId>junit-jupiter</artifactId>
+             <version>5.10.2</version>
+             <scope>test</scope>
+    </dependency>   
 </dependencies>
 
       <build>
           <plugins>
               <plugin>
-                   <groupId>org.springframework.boot</groupId>
-                   <artifactId>spring-boot-maven-plugin</artifactId>
+                      <groupId>org.springframework.boot</groupId>
+                      <artifactId>spring-boot-maven-plugin</artifactId>
+                      <version>3.2.5</version>
               </plugin>
          </plugins>
       </build>
