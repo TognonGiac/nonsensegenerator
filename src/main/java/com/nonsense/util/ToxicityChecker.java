@@ -1,6 +1,6 @@
 package com.nonsense.util;
 
-import com.google.cloud.language.v1.*;
+import com.google.cloud.language.v1beta2.*;
 import java.io.IOException;
 
 public class ToxicityChecker {
