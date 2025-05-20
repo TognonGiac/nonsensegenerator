@@ -1,17 +1,18 @@
 package com.nonsense.util;
 
 import com.google.cloud.language.v1beta2.*;
+
 import java.io.IOException;
 
 public class ToxicityChecker {
     public static boolean isToxic(String text) throws IOException {
-        try (LanguageServiceClient language = LanguageServiceClient.create()) {
-            ModerateTextRequest request = ModerateTextRequest.newBuilder()
-                    .setContent(text)
-                    .setMimeType("text/plain")
+        try (ModerationServiceClient client = ModerationServiceClient.create()) {
+            TextModerationRequest request = TextModerationRequest.newBuilder()
+                    .setText(text)
+                    .setType(ModerationType.MODERATION_TYPE_UNSPECIFIED)
                     .build();
 
-            ModerateTextResponse response = language.moderateText(request);
+            TextModerationResponse response = client.moderateText(request);
 
             return response.getModerationCategoriesList().stream()
                     .anyMatch(cat -> cat.getConfidence() > 0.7);
