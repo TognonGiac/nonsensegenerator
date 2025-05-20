@@ -34,14 +34,21 @@ public class NonsenseGenerator {
         }
     }
 
-    public static List<String> generateSentences(List<String> extraNouns, List<String> extraVerbs, List<String> extraAdjectives, int count) {
+    public static List<String> generateSentences(
+        List<String> userNouns,
+        List<String> userVerbs,
+        List<String> userAdjectives,
+        int count
+    ) {
+        // Crea copie delle liste complete (dizionari base)
         List<String> allNouns = new ArrayList<>(nouns);
         List<String> allVerbs = new ArrayList<>(verbs);
         List<String> allAdjectives = new ArrayList<>(adjectives);
 
-        if (extraNouns != null) allNouns.addAll(extraNouns);
-        if (extraVerbs != null) allVerbs.addAll(extraVerbs);
-        if (extraAdjectives != null) allAdjectives.addAll(extraAdjectives);
+        // Aggiungi parole dall’utente
+        if (userNouns != null) allNouns.addAll(userNouns);
+        if (userVerbs != null) allVerbs.addAll(userVerbs);
+        if (userAdjectives != null) allAdjectives.addAll(userAdjectives);
 
         List<String> results = new ArrayList<>();
         for (int i = 0; i < count; i++) {
