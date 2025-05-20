@@ -33,32 +33,43 @@ public class NonsenseService {
         SentenceAnalyzer analyzer = new SentenceAnalyzer();
         Map<String, List<String>> parts = analyzer.analyzeSyntax(sentence);
         analyzer.close();
-    
+
         List<String> nouns = parts.get("nouns");
         List<String> verbs = parts.get("verbs");
         List<String> adjectives = parts.get("adjectives");
-    
+
         if (nouns != null) globalNouns.addAll(nouns);
         if (verbs != null) globalVerbs.addAll(verbs);
         if (adjectives != null) globalAdjectives.addAll(adjectives);
-    
+
         updateWordFile(NOUNS_FILE, nouns);
         updateWordFile(VERBS_FILE, verbs);
         updateWordFile(ADJECTIVES_FILE, adjectives);
-    
+
         List<String> generated = NonsenseGenerator.generateSentences(nouns, verbs, adjectives, count);
-    
+
+        // Carica la API key dal file delle credenziali JSON (usando GOOGLE_API_KEY env var oppure direttamente path al file json se preferisci)
+        String apiKey = System.getenv("GOOGLE_API_KEY");
+        if (apiKey == null || apiKey.isBlank()) {
+            throw new IllegalStateException("API key non trovata: assicurati di avere GOOGLE_API_KEY nell'env");
+        }
+
         List<String> filtered = new ArrayList<>();
         for (String sentenceOut : generated) {
-            if (ToxicityChecker.isToxic(sentenceOut)) {
-                filtered.add("Frase non mostrata per la sua tossicità");
-            } else {
-                filtered.add(sentenceOut);
+            try {
+                if (ToxicityChecker.isToxic(sentenceOut, apiKey)) {
+                    filtered.add("Frase non mostrata per la sua tossicità");
+                } else {
+                    filtered.add(sentenceOut);
+                }
+            } catch (Exception e) {
+                filtered.add("Errore durante la verifica tossicità");
             }
         }
-    
+
         return filtered;
     }
+
     private void updateWordFile(Path filePath, List<String> newWords) throws IOException {
         if (newWords == null || newWords.isEmpty()) return;
 
