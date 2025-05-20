@@ -1,6 +1,9 @@
 package com.nonsense.util;
 
-import com.google.cloud.language.v1beta2.*;
+import com.google.cloud.language.v1beta2.ModerationServiceClient;
+import com.google.cloud.language.v1beta2.TextModerationRequest;
+import com.google.cloud.language.v1beta2.TextModerationResponse;
+import com.google.cloud.language.v1beta2.ModerationType;
 
 import java.io.IOException;
 
