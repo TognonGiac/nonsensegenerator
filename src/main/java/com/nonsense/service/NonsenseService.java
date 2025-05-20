@@ -1,3 +1,5 @@
+package com.nonsense.service;
+
 import java.util.List;
 import java.util.Set;
 import java.util.HashSet;
@@ -13,9 +15,8 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.stream.Collectors;
 
-import java.io.*;
-import java.nio.file.*;
-import java.util.stream.Collectors;
+import com.nonsense.SentenceAnalyzer;
+import com.nonsense.NonsenseGenerator;
 
 public class NonsenseService {
 
@@ -62,23 +63,16 @@ public class NonsenseService {
         }
 
         // aggiungi solo parole nuove
-        boolean updated = false;
         try (BufferedWriter writer = Files.newBufferedWriter(filePath, StandardOpenOption.CREATE, StandardOpenOption.APPEND)) {
             for (String word : newWords) {
                 if (!existing.contains(word)) {
                     writer.write(word);
                     writer.newLine();
-                    updated = true;
                 }
             }
         }
-
-        if (updated) {
-            System.out.println("File aggiornato: " + filePath.getFileName());
-        }
     }
 
-    // opzionali
     public static Set<String> getGlobalNouns() { return globalNouns; }
     public static Set<String> getGlobalVerbs() { return globalVerbs; }
     public static Set<String> getGlobalAdjectives() { return globalAdjectives; }
