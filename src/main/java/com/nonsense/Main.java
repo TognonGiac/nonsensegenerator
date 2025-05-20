@@ -13,9 +13,9 @@ public class Main {
 
         try {
             SentenceAnalyzer analyzer = new SentenceAnalyzer();
-            String input = "The quick brown fox jumps over the lazy dog.";
+            //String input = "The quick brown fox jumps over the lazy dog.";
 
-            Map<String, List<String>> result = analyzer.analyzeSyntax(input);
+            //Map<String, List<String>> result = analyzer.analyzeSyntax(input);
 
             System.out.println("Nouns: " + result.get("nouns"));
             System.out.println("Verbs: " + result.get("verbs"));
