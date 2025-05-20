@@ -39,7 +39,7 @@ public class NonsenseService {
     public List<String> generateNonsenseSentences(String sentence, int count) throws Exception {
 
         if (apiKey == null || apiKey.isBlank()) {
-            throw new IllegalStateException("API key non trovata: assicurati di avere GOOGLE_API_KEY nell'env");
+            throw new IllegalStateException("API key non trovata: assicurati di avere impostato google.api.key in application.properties");
         }
         
         SentenceAnalyzer analyzer = new SentenceAnalyzer(apiKey);
