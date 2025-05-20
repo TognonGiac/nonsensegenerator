@@ -1,17 +1,12 @@
 package com.nonsense.service;
 
 import com.nonsense.SentenceAnalyzer;
+import com.nonsense.NonsenseGenerator;
 
 import java.io.IOException;
 import java.util.*;
 
 public class NonsenseService {
-
-    private static final List<String> templates = List.of(
-        "Il %s %s il %s.",
-        "Un %s molto %s può %s.",
-        "Perché il %s ha deciso di %s il %s?"
-    );
 
     private static final Set<String> globalNouns = new HashSet<>();
     private static final Set<String> globalVerbs = new HashSet<>();
@@ -26,34 +21,13 @@ public class NonsenseService {
         List<String> verbs = parts.get("verbs");
         List<String> adjectives = parts.get("adjectives");
 
-        // Aggiungi le nuove parole ai dizionari globali
         if (nouns != null) globalNouns.addAll(nouns);
         if (verbs != null) globalVerbs.addAll(verbs);
         if (adjectives != null) globalAdjectives.addAll(adjectives);
 
-        List<String> generated = new ArrayList<>();
-        Random rand = new Random();
-
-        for (int i = 0; i < count; i++) {
-            String template = templates.get(rand.nextInt(templates.size()));
-            String phrase = String.format(
-                template,
-                getRandomOrDefault(nouns, "gatto"),
-                getRandomOrDefault(verbs, "mangia"),
-                getRandomOrDefault(adjectives, "rosso")
-            );
-            generated.add(phrase);
-        }
-
-        return generated;
+        return NonsenseGenerator.generateSentences(nouns, verbs, adjectives, count);
     }
 
-    private String getRandomOrDefault(List<String> list, String fallback) {
-        if (list == null || list.isEmpty()) return fallback;
-        return list.get(new Random().nextInt(list.size()));
-    }
-
-    // Opzionale: getter per dizionari
     public static Set<String> getGlobalNouns() {
         return globalNouns;
     }
