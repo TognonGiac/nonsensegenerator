@@ -14,8 +14,12 @@ import java.util.Map;
 @RequestMapping("/api")
 public class NonsenseController {
 
-    private final NonsenseService service = new NonsenseService();
+    private final NonsenseService service;
 
+    public NonsenseController(NonsenseService service) {
+        this.service = service;
+    }
+    
     @PostMapping("/generate")
     public Map<String, Object> generateSentences(@RequestBody Map<String, Object> payload) throws Exception {
         String sentence = (String) payload.get("sentence");
