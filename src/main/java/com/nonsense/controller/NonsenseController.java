@@ -17,7 +17,7 @@ public class NonsenseController {
     private final NonsenseService service = new NonsenseService();
 
     @PostMapping("/generate")
-    public Map<String, Object> generateSentences(@RequestBody Map<String, Object> payload) {
+    public Map<String, Object> generateSentences(@RequestBody Map<String, Object> payload) throws Exception {
         String sentence = (String) payload.get("sentence");
         Number countNumber = (Number) payload.get("count");
         int count = countNumber.intValue();
