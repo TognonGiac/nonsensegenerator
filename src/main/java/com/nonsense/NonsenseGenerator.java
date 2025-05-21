@@ -29,7 +29,7 @@ public class NonsenseGenerator {
             loadList("/data/adjectives.txt", adjectives);
             loadList("/data/sentence_structures.txt", templates);
         } catch (IOException e) {
-            System.err.println("Errore nel caricamento dei file di parole/template: " + e.getMessage());
+            System.err.println("Error loading word/template files: " + e.getMessage());
         }
     }
 
