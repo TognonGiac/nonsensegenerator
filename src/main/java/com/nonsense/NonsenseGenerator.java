@@ -75,7 +75,7 @@ public class NonsenseGenerator {
         return results;
     }
 
-    private static String fillTemplate(List<String> nouns, List<String> verbs, List<String> adjectives, List<String> properNouns){
+    private static String fillTemplate(String template, List<String> nouns, List<String> verbs, List<String> adjectives, List<String> properNouns) {
         String sentence = template;
         sentence = sentence.replaceFirst("\\[noun\\]", pickRandom(nouns));
         sentence = sentence.replaceFirst("\\[verb\\]", pickRandom(verbs));
