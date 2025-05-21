@@ -1,5 +1,7 @@
-dragon
-pizza
-toaster
-mountain
-penguin
+structure
+pattern
+network
+concept
+element
+device
+reaction
