@@ -39,7 +39,7 @@ public class NonsenseService {
     public List<String> generateNonsenseSentences(String sentence, int count) throws Exception {
 
         if (apiKey == null || apiKey.isBlank()) {
-            throw new IllegalStateException("API key non trovata: assicurati di avere impostato google.api.key in application.properties");
+            throw new IllegalStateException("API key not found: Make sure you have set google.api.key in application.properties");
         }
         
         SentenceAnalyzer analyzer = new SentenceAnalyzer(apiKey);
@@ -64,12 +64,12 @@ public class NonsenseService {
         for (String sentenceOut : generated) {
             try {
                 if (ToxicityChecker.isToxic(sentenceOut, apiKey)) {
-                    filtered.add("Frase non mostrata per la sua tossicità");
+                    filtered.add("Phrase not shown due to its toxicity");
                 } else {
                     filtered.add(sentenceOut);
                 }
             } catch (Exception e) {
-                filtered.add("Errore durante la verifica tossicità");
+                filtered.add("Error while checking toxicity");
             }
         }
 
