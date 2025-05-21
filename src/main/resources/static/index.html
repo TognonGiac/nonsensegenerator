@@ -11,8 +11,8 @@
   <input type="text" id="sentence" placeholder="Enter a sentence" />
   <input type="number" id="count" min="1" max="10" value="1" />
   <button onclick="generate()">Generate</button>
-  <button onclick="copyToClipboard()">Copia frasi</button>
-  <button onclick="saveToFile()">Salva su file</button>
+  <button onclick="copyToClipboard()">Copy sentences</button>
+  <button onclick="saveToFile()">Save to file</button>
 
   <!-- Output -->
   <ul id="output"></ul>
@@ -64,9 +64,9 @@
 
     try {
       document.execCommand("copy");
-      alert("Frasi copiate negli appunti!");
+      alert("Sentences copied to clipboard!");
     } catch (err) {
-      alert("Errore nella copia.");
+      alert("Copy error.");
     }
 
     document.body.removeChild(textarea);
@@ -79,7 +79,7 @@
       .join("\n");
 
     if (!text.trim()) {
-      alert("Niente da salvare!");
+      alert("Nothing to save!");
       return;
     }
 
