@@ -2,4 +2,6 @@ jumps
 dances
 sings
 crashes
-melts
+builds
+explores
+plays
