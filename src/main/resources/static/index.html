@@ -8,11 +8,11 @@
   <h1>Nonsense Generator</h1>
 
   <!-- Form -->
-  <input type="text" id="sentence" placeholder="Inserisci una frase" />
+  <input type="text" id="sentence" placeholder="Enter a sentence" />
   <input type="number" id="count" min="1" max="10" value="1" />
   <button onclick="generate()">Generate</button>
-  <button id="copyBtn">Copy all phrases</button>
-  <button id="saveBtn">Save to file</button>
+  <button onclick="copyToClipboard()">Copia frasi</button>
+  <button onclick="saveToFile()">Salva su file</button>
 
   <!-- Output -->
   <ul id="output"></ul>
