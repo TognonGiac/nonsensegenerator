@@ -15,7 +15,7 @@ public class SentenceAnalyzer {
 
     public SentenceAnalyzer(String apiKey) {
         if (apiKey == null || apiKey.isBlank()) {
-            throw new IllegalArgumentException("API key non valida");
+            throw new IllegalArgumentException("Invalid API key");
         }
         this.apiKey = apiKey;
     }
