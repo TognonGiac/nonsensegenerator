@@ -54,6 +54,7 @@ public class SentenceAnalyzer {
         List<String> nouns = new ArrayList<>();
         List<String> verbs = new ArrayList<>();
         List<String> adjectives = new ArrayList<>();
+        List<String> properNouns = new ArrayList<>();
 
         for (int i = 0; i < tokens.length(); i++) {
             JSONObject token = tokens.getJSONObject(i);
@@ -62,6 +63,7 @@ public class SentenceAnalyzer {
 
             switch (tag) {
                 case "NOUN" -> nouns.add(word);
+                case "PROPN" -> properNouns.add(word);
                 case "VERB" -> verbs.add(word);
                 case "ADJ"  -> adjectives.add(word);
             }
@@ -71,6 +73,7 @@ public class SentenceAnalyzer {
         result.put("nouns", nouns);
         result.put("verbs", verbs);
         result.put("adjectives", adjectives);
+        result.put("properNouns", properNouns);
         return result;
     }
 
