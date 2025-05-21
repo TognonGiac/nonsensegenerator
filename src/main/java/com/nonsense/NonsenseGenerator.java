@@ -91,11 +91,11 @@ public class NonsenseGenerator {
     }
 
     private static String generateMiniSentence(List<String> nouns, List<String> verbs, List<String> adjectives) {
-    String verb;
-    do {
-        verb = pickRandom(verbs);
-    } while (forbiddenMiniSentenceVerbs.contains(verb));
-
-    return "the " + pickRandom(adjectives) + " " + pickRandom(nouns) + " " + verb;
-}
+        String verb;
+        do {
+            verb = pickRandom(verbs);
+        } while (forbiddenMiniSentenceVerbs.contains(verb));
+    
+        return "the " + pickRandom(adjectives) + " " + pickRandom(nouns) + " " + verb;
+    }
 }
