@@ -1,0 +1,625 @@
+<!doctype html>
+<html lang="it-IT, en-US">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NONSENSE Generator - Doc</title>
+    <link rel="shortcut icon" type="x-icon" href="resources/img/icons/logo1.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="style/scribbler-global.css">
+    <link rel="stylesheet" href="style/scribbler-doc.css">
+    <link rel="author" href="authors.txt">
+    <link rel="stylesheet" href="style/pictures_style.css">
+    <link rel="stylesheet" href="style/custom.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+<div class="doc__bg"></div>
+<nav class="header">
+    <h1 class="logo">NONSENSE Generator<br><span class="logo__thin">Documentation</span></h1>
+    <ul class="menu" title="link to the repository">
+        <div class="menu__item toggle"><span></span></div>
+        <li class="menu__item">
+            <a href="https://github.com/giuliagirotto/NONSENSE-generator" class="link link--white-color;" style="color:white";>
+                <i class="fa fa-github"></i><span style="margin-left: 4px">Repository GitHub</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+<div class="wrapper">
+    <aside class="doc__nav">
+        <ul>
+            <li class="js-btn selected">Manual</li>
+            <li class="js-btn">Specifications</li>
+            <li class="js-btn">Design</li>
+            <li class="js-btn">Testing</li>
+            <li class="js-btn">JavaDoc</li>
+        </ul>
+    </aside>
+
+
+    <article class="doc__content">
+        <section class="js-section">
+            <h1 class="section__title" style="font-size: 33px;">Manual</h1>
+            <!-- INTRODUCTION -->
+            <h2>What's NONSENSE Generator?</h2>
+            <p>
+                NONSENSE Generator allows the creation of absurd sentences based on user-provided text input.<br>
+                Once a sentence is entered, the system performs syntactic analysis to extract the main words and store them in an internal dictionary. 
+                Using these words, the generator produces new sentences by randomly combining subjects, verbs, and complements, thus ensuring original and unpredictable outputs. 
+                The generated sentences are then subjected to a toxicity check through integration with the Google Cloud APIs, to ensure safe and appropriate content.<br>
+                The project also includes features such as regeneration, file saving, copy to clipboard, and interface reset, in order to offer a complete and interactive user experience.
+            </p>
+            <p>METTERE FOTO ANTEPRIMA GENERATORE</p>
+            <div class="span-h2"></div>
+
+
+            <!-- TECNOLOGIE UTILIZZATE -->
+            <h2>Technologies Used</h2>
+            <table id="Librerie">
+                <tr>
+                    <th><b>Name</b></th>
+                    <th><b>Version</b></th>
+                    <th><b>Description</b></th>
+                </tr>
+                <tr>
+                    <td align="center">Java</td>
+                    <td align="center">20</td>
+                    <td>Programming environment and language used to develop the application.</td>
+                </tr>
+                <tr>
+                    <td align="center">JUnit</td>
+                    <td align="center">5.9.1</td>
+                    <td>Framework for automatic testing of Java classes.</td>
+                </tr>
+            </table>
+            <p>
+                It's recommended to also consult the section <a href="#JavaDoc">Javadoc</a> in order to better understand the integration of the libraries.
+            </p>
+            <div class="span-h2"></div>
+
+            <!-- SCARICARE ED INSTALLARE IL SOFTWARE -->
+            <h2>Project Description and Implementation</h2>
+            <p>
+                At the beginning of the project development the specifications were discussed and studied 
+                in order to tackle the design and development phases rigorously.
+            </p>
+            <p>
+                After completing the <a href="#specifications">specification</a> and <a href="#design">design</a> phase, the development of the sentence generator began.
+            </p>
+            <div class="span-h3"></div>
+
+            <h3>Graphic Interface</h3>
+            <p>DA COMPLETARE</p>
+            <div class="span-h3"></div>
+
+            <h3>Generate</h3>
+            <table>
+                <tr>
+                    <td><b>Generate the required sentences</b></td>
+                    <td>Using the button "Generate", it's possible to generate the requested amount of nonsense sentences from the given sentence.</td>
+                </tr>
+            </table>
+            <div class="span-h3"></div>
+            <h3>Reset</h3>
+            <table>
+                <tr>
+                    <td><b>Reset the generator</b></td>
+                    <td>Using the button "Reset", it's possible to reset the generator to start the insertion again.</td>
+                </tr>
+            </table>
+            <div class="span-h3"></div>
+            <h3>Copy</h3>
+            <table>
+                <tr>
+                    <td><b>Copy the generated sentences</b></td>
+                    <td>Using the button "Copy", it's possible to copy the generated sentences, either individually or all together.</td>
+                </tr>
+            </table>
+            <div class="span-h3"></div>
+            <h3>Save</h3>
+            <table>
+                <tr>
+                    <td><b>Save the generated sentences</b></td>
+                    <td>Using the button "Save", it's possible to save the generated sentences in a text file.</td>
+                </tr>
+            </table>
+            <div class="span-h3"></div>
+
+            <p>
+                At the end of the development, code refactoring was performed to enable efficient <a href="#test">testing</a>, 
+                including the use of JUnit. 
+            </p>
+            <div class="span-h2"></div>
+
+            <!-- SCARICARE ED INSTALLARE IL SOFTWARE -->
+            <h2>Download Software</h2>
+            <h3>IDE</h3>
+            <p>
+                To use the generator you need to clone the <b>repository at the link on the top right side of the page</b>, 
+                then open the project using a <b>IDE</b> and execute the file <code>Main.java</code> at the following path:
+                <b>src/main/java/com/nonsense/Main.java</b>
+                <br><br>
+                Per l’esecuzione è necessaria l'installazione della <b>jdk</b> (preferibilmente <b>versione 20</b>).
+            </p>
+            <div class="span-h2"></div>
+
+            <!-- DESIGN PATTERNS -->
+            <h2>Design Patterns</h2>
+            
+
+            <h4>Controller</h4>
+           
+
+            <h4>Low Coupling</h4>
+           
+
+            <h4>Pure Fabrication</h4>
+
+
+        </section>
+
+        <hr/>  <!-- ---------------------------------------------------------------------- -->
+
+        <section class="js-section" id="specifications">
+            <h1 class="section__title" style="font-size: 33px;">Specifications</h1>
+
+            <!--IMAGES USE CASES-->
+            <img class="myImg" src="resources/img/diagrams/UseCasesDiagram.png" alt="Use Cases" title="Use Cases"
+                 width="100%">
+            <div id="myModal" class="modal">
+                <img class="modal-content" id="img01">
+                <div id="caption"></div>
+            </div>
+            <ol>
+                <li><a href="#UC1" style="color: var(--accent-color)">Enter Initial Sentence</a></li>
+                <li><a href="#UC2" style="color: var(--accent-color)">Selection Number of Output Sentences</a></li>
+                <li><a href="#UC3" style="color: var(--accent-color)">View Generated Sentences</a></li>
+                <li><a href="#UC4" style="color: var(--accent-color)">Toxicity Check</a></li>
+                <li><a href="#UC5" style="color: var(--accent-color)">Reset the generator</a></li>
+                <li><a href="#UC6" style="color: var(--accent-color)">Copy the sentences</a></li>
+                <li><a href="#UC7" style="color: var(--accent-color)">Save Output Sentences to Text File</a></li>
+                <li><a href="#UC8" style="color: var(--accent-color)">Save Words to Software Dictionary</a></li>
+            </ol>
+
+            <!--TABELLA UC1-->
+            <table>
+                <tr>
+                    <th><b id="UC1">Use Case 1</b></th>
+                </tr>
+                <tr>
+                    <td><b>Use Case Name</b></td>
+                    <td>Enter Initial Sentence</td>
+                </tr>
+                <tr>
+                    <td><b>Actors</b></td>
+                    <td>User</td>
+                </tr>
+                <tr>
+                    <td><b>Description</b></td>
+                    <td>Input of a sentence which will be syntactically analyzed by the system.</td>
+                </tr>
+                <tr>
+                    <td><b>Preconditions</b></td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td><b>Main Scenario</b></td>
+                    <td>The user enters a sentence in the text box.</td>
+                </tr>
+                <tr>
+                    <td><b>Alternative Scenario</b></td>
+                    <td>The user does not input a sentence: the system shows an error message.</td>
+                </tr>
+                <tr>
+                    <td><b>Post-Conditions</b></td>
+                    <td>The sentence is stored and parsed for further processing.</td>
+                </tr>
+                <tr>
+                    <td><b>Note</b></td>
+                    <td>-</td>
+                </tr>
+            </table>
+
+              <!--TABELLA UC2-->
+            <table>
+                <tr>
+                    <th><b id="UC2">Use Case 2</b></th>
+                </tr>
+                <tr>
+                    <td><b>Use Case Name</b>
+                    <td>Selection Number of Output Sentences</td>
+                </tr>
+                <tr>
+                    <td><b>Actors</b></td>
+                    <td>User</td>
+                </tr>
+                <tr>
+                    <td><b>Description</b></td>
+                    <td>The user selects the desired amount of nonsense sentences to output.</td>
+                </tr>
+                <tr>
+                    <td><b>Preconditions</b></td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td><b>Main Scenario</b></td>
+                    <td>The user selects the number of nonsense sentences.</td>
+                </tr>
+                <tr>
+                    <td><b>Alternative Scenario</b></td>
+                    <td>No sentence is entered, so nothing is generated.</td>
+                </tr>
+                <tr>
+                    <td><b>Post-Conditions</b></td>
+                    <td>System is ready to generate the specified number of sentences.</td>
+                </tr>
+                <tr>
+                    <td><b>Note</b></td>
+                    <td>-</td>
+                </tr>
+            </table>
+
+             <!--TABELLA UC3-->
+            <table>
+                <tr>
+                    <th><b id="UC3">Use Case 3</b></th>
+                </tr>
+                <tr>
+                    <td><b>Use Case Name</b>
+                    <td>View Generated Sentences</td>
+                </tr>
+                <tr>
+                    <td><b>Actors</b></td>
+                    <td>User</td>
+                </tr>
+                <tr>
+                    <td><b>Description</b></td>
+                    <td>The user views the number of nonsense sentences generated as output.</td>
+                </tr>
+                <tr>
+                    <td><b>Preconditions</b></td>
+                    <td>The user must have entered an input sentence and selected the number of nonsense sentences to generate.</td>
+                </tr>
+                <tr>
+                    <td><b>Main Scenario</b></td>
+                    <td>After clicking the “Generate” button, the user sees the generated nonsense sentences displayed as output.</td>
+                </tr>
+                <tr>
+                    <td><b>Alternative Scenario</b></td>
+                    <td>If the user has not entered both the input sentence and the number of desired output sentences,
+                        then no sentences will be generated or displayed.</td>
+                </tr>
+                <tr>
+                    <td><b>Post-Conditions</b></td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td><b>Note</b></td>
+                    <td>-</td>
+                </tr>
+            </table>
+
+             <!--TABELLA UC4-->
+            <table>
+                <tr>
+                    <th><b id="UC4">Use Case 4</b></th>
+                </tr>
+                <tr>
+                    <td><b>Use Case Name</b>
+                    <td>Toxicity Check</td>
+                </tr>
+                <tr>
+                    <td><b>Actors</b></td>
+                    <td>Software</td>
+                </tr>
+                <tr>
+                    <td><b>Description</b></td>
+                    <td>The system checks that each of the generated sentences doesn't include appropriate content.</td>
+                </tr>
+                <tr>
+                    <td><b>Preconditions</b></td>
+                    <td>All the requested sentences in output have been generated</td>
+                </tr>
+                <tr>
+                    <td><b>Main Scenario</b></td>
+                    <td>Sentence is safe, so it's shown in output.</td>
+                </tr>
+                <tr>
+                    <td><b>Alternative Scenario</b></td>
+                    <td>Sentence is toxic, so warning message is shown instead.</td>
+                </tr>
+                <tr>
+                    <td><b>Post-Conditions</b></td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td><b>Note</b></td>
+                    <td>Google API is used to check each sentence</td>
+                </tr>
+            </table>
+
+             <!--TABELLA UC5-->
+            <table>
+                <tr>
+                    <th><b id="UC5">Use Case 5</b></th>
+                </tr>
+                <tr>
+                    <td><b>Use Case Name</b>
+                    <td>Reset the generator</td>
+                </tr>
+                <tr>
+                    <td><b>Actors</b></td>
+                    <td>User</td>
+                </tr>
+                <tr>
+                    <td><b>Description</b></td>
+                    <td>When the user clicks the “Reset” button, all previously generated nonsense sentences are removed.</td>
+                </tr>
+                <tr>
+                    <td><b>Preconditions</b></td>
+                    <td>The “Reset” button has been clicked.</td>
+                </tr>
+                <tr>
+                    <td><b>Main Scenario</b></td>
+                    <td>All generated nonsense sentences up to that moment are cleared from the interface.</td>
+                </tr>
+                <tr>
+                    <td><b>Alternative Scenario</b></td>
+                    <td>If the user has not entered anything, the reset action has no effect.</td>
+                </tr>
+                <tr>
+                    <td><b>Post-Conditions</b></td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td><b>Note</b></td>
+                    <td>-</td>
+                </tr>
+            </table>
+
+            <!--TABELLA UC6-->
+            <table>
+                <tr>
+                    <th><b id="UC6">Use Case 6</b></th>
+                </tr>
+                <tr>
+                    <td><b>Use Case Name</b>
+                    <td>Copy the sentences</td>
+                </tr>
+                <tr>
+                    <td><b>Actors</b></td>
+                    <td>Utente</td>
+                </tr>
+                <tr>
+                    <td><b>Description</b></td>
+                    <td>When the user clicks the “Reset” button, all previously generated nonsense sentences are removed.</td>
+                </tr>
+                <tr>
+                    <td><b>Preconditions</b></td>
+                    <td>The user has selected which sentences they want to copy.</td>
+                </tr>
+                <tr>
+                    <td><b>Main Scenario</b></td>
+                    <td>The user is allowed to copy a specific sentence or all generated sentences.</td>
+                </tr>
+                <tr>
+                    <td><b>Alternative Scenario</b></td>
+                    <td>Copying is not allowed.</td>
+                </tr>
+                <tr>
+                    <td><b>Post-Conditions</b></td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td><b>Note</b></td>
+                    <td>-</td>
+                </tr>
+            </table>
+
+            <!--TABELLA UC7-->
+            <table>
+                <tr>
+                    <th><b id="UC7">Use Case 7</b></th>
+                </tr>
+                <tr>
+                    <td><b>Use Case Name</b>
+                    <td>Save Input Sentence to Text File</td>
+                </tr>
+                <tr>
+                    <td><b>Actors</b></td>
+                    <td>User</td>
+                </tr>
+                <tr>
+                    <td><b>Description</b></td>
+                    <td>The words from the user’s input sentence are saved to the software’s internal dictionary.</td>
+                </tr>
+                <tr>
+                    <td><b>Preconditions</b></td>
+                    <td>The user has entered an input sentence, selected the number of output sentences, and clicked the “Generate” button.</td>
+                </tr>
+                <tr>
+                    <td><b>Main Scenario</b></td>
+                    <td>The user enters a sentence, which is then analyzed.<br>The extracted words are saved to the software’s dictionary for future use in generating nonsense sentences.</td>
+                </tr>
+                <tr>
+                    <td><b>Alternative Scenario</b></td>
+                    <td>If the input sentence field is left empty, the system displays an error message.</td>
+                </tr>
+                <tr>
+                    <td><b>Post-Conditions</b></td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td><b>Note</b></td>
+                    <td>Words are saved in a .txt text file.</td>
+                </tr>
+            </table>
+
+            <!--TABELLA UC8-->
+            <table>
+                <tr>
+                    <th><b id="UC8">Use Case 8</b></th>
+                </tr>
+                <tr>
+                    <td><b>Use Case Name</b>
+                    <td>Save Words to Software Dictionary</td>
+                </tr>
+                <tr>
+                    <td><b>Actors</b></td>
+                    <td>Software</td>
+                </tr>
+                <tr>
+                    <td><b>Description</b></td>
+                    <td>Automatic saving of the words from the user’s input sentence into the software’s internal dictionary.</td>
+                </tr>
+                <tr>
+                    <td><b>Preconditions</b></td>
+                    <td>The system checks the quality of the input: no empty strings or whitespace-only entries are allowed.</td>
+                </tr>
+                <tr>
+                    <td><b>Main Scenario</b></td>
+                    <td>The user enters a sentence, which is analyzed.<br> The extracted words are saved to the internal dictionary so they can be reused in the generation of nonsense sentences.</td>
+                </tr>
+                <tr>
+                    <td><b>Alternative Scenario</b></td>
+                    <td>If the input sentence field is left empty, the system displays an error message.</td>
+                </tr>
+                <tr>
+                    <td><b>Post-Conditions</b></td>
+                    <td>Data persistence: the saved words must remain available even after the program is closed.</td>
+                </tr>
+                <tr>
+                    <td><b>Note</b></td>
+                    <td>The saved words must be actively used in future generations, at least one saved word should appear in each generated sentence.</td>
+                </tr>
+            </table>
+
+            
+        </section>
+
+        <hr/>
+
+        <section class="js-section">
+            <h1 class="section__title" id="design">Design</h1>
+            <h2>Domain Model</h2>
+            <img class="myImg" src="resources/img/diagrams/DomainModel.png" alt="Domain model" title="Domain model"
+                 width="100%">
+            <div class="span-h2"></div>
+
+            <h2>Design Class Model</h2>
+            <img class="myImg" src="resources/img/diagrams/DesignClassModel.png" alt="Design Class Model"
+                 title="zoom picture" width="100%">
+
+            <h2>Sequence Diagrams</h2>
+
+            <h3>System Sequence Diagram</h3>
+            <!--IMMAGINE -->
+            <img class="myImg" src="resources/img/diagrams/SystemSequenceDiagram.png" alt="System Sequence Diagram"
+                 title="System Sequence Diagram" height="50%" width="50%"
+                 style="display:block; margin-left:auto; margin-right:auto">
+
+            <h3>Internal Sequence Diagrams</h3>
+            <h4>Sentence analysis and saving words</h4>
+            <!--IMMAGINE -->
+            <img class="myImg" src="resources/img/diagrams/InternalSequenceDiagram1.png" alt="Internal Sequence Diagram"
+                 title="Internal Sequence Diagram" height="50%" width="50%"
+                 style="display:block; margin-left:auto; margin-right:auto">
+
+            <div class="span-h4"></div>
+
+            <h4>Generation of nonsense sentences</h4>
+            <!--IMMAGINE -->
+            <img class="myImg" src="resources/img/diagrams/InternalSequenceDiagram2.png" alt="Internal Sequence Diagram"
+                 title="Internal Sequence Diagram" height="50%" width="50%"
+                 style="display:block; margin-left:auto; margin-right:auto">
+
+            <div class="span-h4"></div>
+
+
+            <h4>Toxicity control</h4>
+            <!--IMMAGINE -->
+            <img class="myImg" src="resources/img/diagrams/InternalSequenceDiagram3.png"
+                 alt="Internal Sequence Diagram"
+                 title="Internal Sequence Diagram" height="50%" width="50%"
+                 style="display:block; margin-left:auto; margin-right:auto">
+
+            <div class="span-h4"></div>
+
+
+            <h4>Post-output actions: reset, copy, save</h4>
+            <!--IMMAGINE -->
+            <img class="myImg" src="resources/img/diagrams/InternalSequenceDiagram4.png"
+                 alt="Internal Sequence Diagram"
+                 title="Internal Sequence Diagram" height="40%" width="40%"
+                 style="display:block; margin-left:auto; margin-right:auto">
+
+            <div class="span-h4"></div>
+        </section>
+
+        <hr/>
+
+        <section class="js-section">
+            <h2 class="section__title" style="font-size: 33px;" id="test">Test</h2>
+
+            <div id="contenitore">
+                <div class="contenuto">
+                    <h3 class="section__title" style="text-align: center;">Unit Tests Results</h3>
+                    <figure>
+                        <a href="resources/TestResults.html" target="_blank">
+                            <img src="resources/img/icons/TestResult.jpg" width="20%" height="20%"
+                                 title="Unit Tests Results" alt="Unit Tests Results"
+                                 style="display:block; margin-left:auto; margin-right:auto"></a>
+                        <figcaption>
+                            <p style="text-align: center;">Clicca per vedere i risultati degli Unit Tests</p>
+                        </figcaption>
+                    </figure>
+                    <div>
+                        <p><br><br></p>
+                        <h3 class="section__title" style="text-align: center;">System Tests</h3>
+                        <figure>
+                            <a href="resources/SystemTestReport.pdf" target="_blank">
+                                <img src="resources/img/icons/SystemTest.png" width="20%" height="20%"
+                                     title="System Tests" alt="System Tests"
+                                     style="display:block; margin-left:auto; margin-right:auto"></a>
+                            <figcaption>
+                                <p style="text-align: center;">Clicca per vedere i System Tests</p>
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <hr/>
+
+
+        <section class="js-section">
+            <h1 class="section__title" style="font-size: 33px;" id="JavaDoc">JavaDoc</h1>
+            <figure>
+                <a href="resources/Javadoc/com.klotski.app/module-summary.html" target="_blank">
+                    <img src="resources/img/icons/JavaDoc.jfif" width="20%" height="20%" title="Java Doc" alt="Java Doc"
+                         style="display:block; margin-left:auto; margin-right:auto"></a>
+                <figcaption>
+                    <p style="text-align: center;">Clicca per vedere il JavaDoc</p>
+                </figcaption>
+            </figure>
+        </section>
+
+
+    </article>
+</div>
+
+ <button id="scrollTopBtn" onclick="scrollToTop()">↑</button>
+    
+<footer class="footer">Authors: <b>Girotto Giulia, Marcato Silvia, Smiderle Nicola, Tognon Giacomo</b></footer>
+    
+<script src="scribbler.js"></script>
+</body>
+
+</html>
