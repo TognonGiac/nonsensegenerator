@@ -13,6 +13,15 @@ public class NonsenseGenerator {
     private static final List<String> templates = new ArrayList<>();
     private static final Random rand = new Random();
 
+    private static final Set<String> forbiddenMiniSentenceVerbs = Set.of(
+        "is", "are", "was", "were", "has", "have", "had",
+        "can", "could", "shall", "should", "will", "would",
+        "does", "do", "did",
+        "likes", "loves", "hates", "wants", "needs", "sees",
+        "thinks", "believes", "knows", "hears", "feels",
+        "tries", "hopes", "helps", "seems", "appears", "becomes"
+    );
+    
     static {
         try {
             loadList("/data/nouns.txt", nouns);
@@ -85,7 +94,7 @@ public class NonsenseGenerator {
     String verb;
     do {
         verb = pickRandom(verbs);
-    } while (verb.equals("is") || verb.equals("has"));
+    } while (forbiddenMiniSentenceVerbs.contains(verb));
 
     return "the " + pickRandom(adjectives) + " " + pickRandom(nouns) + " " + verb;
 }
