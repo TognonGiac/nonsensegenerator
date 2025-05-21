@@ -7,3 +7,6 @@ A [adjective] [noun] always [verb].
 Every day, the [adjective] [noun] [verb] and [sentence].
 The [noun] and the [adjective] [noun] [verb] together.
 The [noun] can no more [verb] due to the [adjective] [noun].
+[nounProper] [verb] the [adjective] [noun].
+Sometimes, [nounProper] and the [adjective] [noun] [verb] together.
+Without warning, [nounProper] [verb] the [adjective] [noun].
