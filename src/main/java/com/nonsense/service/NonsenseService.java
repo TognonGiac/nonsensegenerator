@@ -64,7 +64,7 @@ public class NonsenseService {
         for (String sentenceOut : generated) {
             try {
                 if (ToxicityChecker.isToxic(sentenceOut, apiKey)) {
-                    filtered.add("Phrase not shown due to its toxicity");
+                    filtered.add("Sentence not shown due to its toxicity");
                 } else {
                     filtered.add(sentenceOut);
                 }
