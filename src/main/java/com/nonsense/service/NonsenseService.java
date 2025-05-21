@@ -28,10 +28,12 @@ public class NonsenseService {
     private static final Set<String> globalNouns = new HashSet<>();
     private static final Set<String> globalVerbs = new HashSet<>();
     private static final Set<String> globalAdjectives = new HashSet<>();
+    private static final Set<String> globalProperNouns = new HashSet<>();
 
     private static final Path NOUNS_FILE = Paths.get("src/main/resources/data/nouns.txt");
     private static final Path VERBS_FILE = Paths.get("src/main/resources/data/verbs.txt");
     private static final Path ADJECTIVES_FILE = Paths.get("src/main/resources/data/adjectives.txt");
+    private static final Path PROPER_NOUNS_FILE = Paths.get("src/main/resources/data/proper_nouns.txt");
 
     @Value("${google.api.key}")
     private String apiKey;
@@ -49,16 +51,19 @@ public class NonsenseService {
         List<String> nouns = parts.get("nouns");
         List<String> verbs = parts.get("verbs");
         List<String> adjectives = parts.get("adjectives");
+        List<String> properNouns = parts.get("properNouns");
 
         if (nouns != null) globalNouns.addAll(nouns);
         if (verbs != null) globalVerbs.addAll(verbs);
         if (adjectives != null) globalAdjectives.addAll(adjectives);
+        if (properNouns != null) globalProperNouns.addAll(properNouns);
 
         updateWordFile(NOUNS_FILE, nouns);
         updateWordFile(VERBS_FILE, verbs);
         updateWordFile(ADJECTIVES_FILE, adjectives);
+        updateWordFile(PROPER_NOUNS_FILE, properNouns);
 
-        List<String> generated = NonsenseGenerator.generateSentences(nouns, verbs, adjectives, count);
+        List<String> generated = NonsenseGenerator.generateSentences(nouns, verbs, adjectives, properNouns, count);
 
         List<String> filtered = new ArrayList<>();
         for (String sentenceOut : generated) {
@@ -102,4 +107,6 @@ public class NonsenseService {
     public static Set<String> getGlobalNouns() { return globalNouns; }
     public static Set<String> getGlobalVerbs() { return globalVerbs; }
     public static Set<String> getGlobalAdjectives() { return globalAdjectives; }
+    public static Set<String> getGlobalProperNouns() { return globalProperNouns; }
+
 }
