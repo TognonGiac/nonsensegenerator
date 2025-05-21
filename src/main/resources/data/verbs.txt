@@ -1,7 +1,5 @@
 jumps
 dances
 sings
-crashes
-builds
 explores
 plays
