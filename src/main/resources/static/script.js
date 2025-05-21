@@ -2,7 +2,7 @@ function analyzeText() {
   const input = document.getElementById("inputText").value;
 
   if (!input.trim()) {
-    document.getElementById("output").innerText = "Inserisci una frase prima di analizzare!";
+    document.getElementById("output").innerText = "Insert a sentence before analyzing!";
     return;
   }
 
@@ -13,17 +13,17 @@ function analyzeText() {
   `;
 }
 
-document.getElementById('copyBtn').addEventListener('click', () => {
-  const output = document.getElementById('output');
+function copyToClipboard() {
+  const output = document.getElementById("output");
   const text = Array.from(output.querySelectorAll('p'))
     .map(p => p.innerText)
     .join('\n');
   navigator.clipboard.writeText(text)
     .then(() => alert('Sentences copied to clipboard!'))
-    .catch(err => alert('Copy error: ' + err));
-});
+    .catch(err => alert('Copy Error: ' + err));
+}
 
-document.getElementById('saveBtn').addEventListener('click', () => {
+function saveToFile() {
   const phrases = Array.from(document.getElementById('output').querySelectorAll('p'))
     .map(p => p.innerText);
 
@@ -33,9 +33,10 @@ document.getElementById('saveBtn').addEventListener('click', () => {
     body: JSON.stringify({ phrases })
   })
     .then(response => {
-      if (!response.ok) throw new Error('Save error');
+      if (!response.ok) throw new Error('Save Error');
       return response.text();
     })
     .then(msg => alert(msg))
-    .catch(err => alert('Error: ' + err.message));
-});
+    .catch(err => alert('Errore: ' + err.message));
+}
+
