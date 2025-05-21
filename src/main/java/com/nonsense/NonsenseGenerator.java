@@ -12,6 +12,15 @@ public class NonsenseGenerator {
     private static final List<String> adjectives = new ArrayList<>();
     private static final List<String> templates = new ArrayList<>();
     private static final Random rand = new Random();
+
+    private static final Set<String> forbiddenMiniSentenceVerbs = Set.of(
+        "is", "are", "was", "were", "has", "have", "had",
+        "can", "could", "shall", "should", "will", "would",
+        "does", "do", "did",
+        "likes", "loves", "hates", "wants", "needs", "sees",
+        "thinks", "believes", "knows", "hears", "feels",
+        "tries", "hopes", "helps", "seems", "appears", "becomes"
+    );
     
     static {
         try {
