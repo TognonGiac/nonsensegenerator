@@ -34,7 +34,7 @@ public class NonsenseController {
         }
 
         if (count < 1 || count > 10) {
-            response.put("error", "Il numero di frasi deve essere tra 1 e 10.");
+            response.put("error", "The number of sentences must be between 1 and 10.");
             return response;
         }
 
