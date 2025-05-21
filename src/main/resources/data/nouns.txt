@@ -1,5 +1,3 @@
-structure
-pattern
 network
 concept
 element
