@@ -11,8 +11,6 @@ public class NonsenseGenerator {
     private static final List<String> verbs = new ArrayList<>();
     private static final List<String> adjectives = new ArrayList<>();
     private static final List<String> templates = new ArrayList<>();
-    private static final List<String> properNouns = new ArrayList<>();
-
     private static final Random rand = new Random();
 
     private static final Set<String> forbiddenMiniSentenceVerbs = Set.of(
@@ -23,14 +21,13 @@ public class NonsenseGenerator {
         "thinks", "believes", "knows", "hears", "feels",
         "tries", "hopes", "helps", "seems", "appears", "becomes"
     );
-    
+
     static {
         try {
             loadList("/data/nouns.txt", nouns);
             loadList("/data/verbs.txt", verbs);
             loadList("/data/adjectives.txt", adjectives);
             loadList("/data/sentence_structures.txt", templates);
-            loadList("/data/proper_nouns.txt", properNouns);
         } catch (IOException e) {
             System.err.println("Errore nel caricamento dei file di parole/template: " + e.getMessage());
         }
@@ -50,32 +47,29 @@ public class NonsenseGenerator {
         List<String> userNouns,
         List<String> userVerbs,
         List<String> userAdjectives,
-        List<String> userProperNouns,
         int count
     ) {
         // Crea copie delle liste complete (dizionari base)
         List<String> allNouns = new ArrayList<>(nouns);
         List<String> allVerbs = new ArrayList<>(verbs);
         List<String> allAdjectives = new ArrayList<>(adjectives);
-        List<String> allProperNouns = new ArrayList<>(properNouns);
 
         // Aggiungi parole dall’utente
         if (userNouns != null) allNouns.addAll(userNouns);
         if (userVerbs != null) allVerbs.addAll(userVerbs);
         if (userAdjectives != null) allAdjectives.addAll(userAdjectives);
-        if (userProperNouns != null) allProperNouns.addAll(userProperNouns);
 
         List<String> results = new ArrayList<>();
         for (int i = 0; i < count; i++) {
             String template = templates.get(rand.nextInt(templates.size()));
-            String sentence = fillTemplate(template, allNouns, allVerbs, allAdjectives, allProperNouns);
+            String sentence = fillTemplate(template, allNouns, allVerbs, allAdjectives);
             results.add(sentence);
         }
 
         return results;
     }
 
-    private static String fillTemplate(String template, List<String> nouns, List<String> verbs, List<String> adjectives, List<String> properNouns) {
+    private static String fillTemplate(String template, List<String> nouns, List<String> verbs, List<String> adjectives) {
         String sentence = template;
         sentence = sentence.replaceFirst("\\[noun\\]", pickRandom(nouns));
         sentence = sentence.replaceFirst("\\[verb\\]", pickRandom(verbs));
@@ -83,8 +77,6 @@ public class NonsenseGenerator {
         sentence = sentence.replaceFirst("\\[noun\\]", pickRandom(nouns));
         sentence = sentence.replaceFirst("\\[adjective\\]", pickRandom(adjectives));
         sentence = sentence.replaceFirst("\\[noun\\]", pickRandom(nouns));
-        sentence = sentence.replaceFirst("\\[nounProper\\]", pickRandom(properNouns));
-
         
         // nuova gestione per [sentence]
         if (sentence.contains("[sentence]")) {
@@ -103,7 +95,7 @@ public class NonsenseGenerator {
         do {
             verb = pickRandom(verbs);
         } while (forbiddenMiniSentenceVerbs.contains(verb));
-    
+
         return "the " + pickRandom(adjectives) + " " + pickRandom(nouns) + " " + verb;
     }
 }
