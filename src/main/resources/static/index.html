@@ -10,7 +10,8 @@
   <!-- Form -->
   <input type="text" id="sentence" placeholder="Inserisci una frase" />
   <input type="number" id="count" min="1" max="10" value="1" />
-  <button onclick="generate()">Genera</button>
+  <button onclick="generate()">Generate</button>
+  <button id="copyBtn">Copy all phrases</button>
 
   <!-- Output -->
   <ul id="output"></ul>
@@ -40,7 +41,7 @@
           output.appendChild(li);
         });
       } else {
-        output.textContent = "Errore: " + data.error;
+        output.textContent = "Error: " + data.error;
       }
     }
   </script>
