@@ -17,33 +17,79 @@
   <!-- Output -->
   <ul id="output"></ul>
 
-  <!-- Script -->
-  <script>
-    async function generate() {
-      const sentence = document.getElementById("sentence").value;
-      const count = parseInt(document.getElementById("count").value);
+ <!-- Script -->
+<script>
+  async function generate() {
+    const sentence = document.getElementById("sentence").value;
+    const count = parseInt(document.getElementById("count").value);
 
-      const response = await fetch("http://localhost:8080/api/generate", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ sentence, count })
+    const response = await fetch("http://localhost:8080/api/generate", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ sentence, count })
+    });
+
+    const data = await response.json();
+    const output = document.getElementById("output");
+    output.innerHTML = "";
+
+    if (data.sentences) {
+      data.sentences.forEach(s => {
+        const li = document.createElement("li");
+        li.textContent = s;
+        output.appendChild(li);
       });
-
-      const data = await response.json();
-      const output = document.getElementById("output");
-      output.innerHTML = "";
-
-      if (data.sentences) {
-        data.sentences.forEach(s => {
-          const li = document.createElement("li");
-          li.textContent = s;
-          output.appendChild(li);
-        });
-      } else {
-        output.textContent = "Error: " + data.error;
-      }
+    } else {
+      output.textContent = "Error: " + data.error;
     }
-  </script>
+  }
+
+  function copyToClipboard() {
+    const items = document.querySelectorAll("#output li");
+    const text = Array.from(items)
+      .map(li => li.textContent)
+      .join("\n");
+
+    if (!text.trim()) {
+      alert("Niente da copiare!");
+      return;
+    }
+
+    const textarea = document.createElement("textarea");
+    textarea.value = text;
+    document.body.appendChild(textarea);
+    textarea.select();
+
+    try {
+      document.execCommand("copy");
+      alert("Frasi copiate negli appunti!");
+    } catch (err) {
+      alert("Errore nella copia.");
+    }
+
+    document.body.removeChild(textarea);
+  }
+
+  function saveToFile() {
+    const items = document.querySelectorAll("#output li");
+    const text = Array.from(items)
+      .map(li => li.textContent)
+      .join("\n");
+
+    if (!text.trim()) {
+      alert("Niente da salvare!");
+      return;
+    }
+
+    const blob = new Blob([text], { type: "text/plain" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "frasi_nonsense.txt";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+</script>
 </body>
