@@ -33,7 +33,7 @@ document.getElementById('saveBtn').addEventListener('click', () => {
     body: JSON.stringify({ phrases })
   })
     .then(response => {
-      if (!response.ok) throw new Error('Save error: ');
+      if (!response.ok) throw new Error('Save error');
       return response.text();
     })
     .then(msg => alert(msg))
