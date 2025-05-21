@@ -38,7 +38,7 @@ public class NonsenseController {
         Map<String, Object> response = new HashMap<>();
 
         if (sentence == null || sentence.trim().isEmpty()) {
-            response.put("error", "Invalid sentence.");
+            response.put("error", "Frase non valida.");
             return response;
         }
 
@@ -73,10 +73,10 @@ public class NonsenseController {
 
             Files.write(outputFile, request.getPhrases());
 
-            return ResponseEntity.ok("Phrases saved in the file: " + filename);
+            return ResponseEntity.ok("Frasi salvate nel file: " + filename);
         } catch (IOException e) {
             e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error saving");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Errore nel salvataggio");
         }
     }
 }
