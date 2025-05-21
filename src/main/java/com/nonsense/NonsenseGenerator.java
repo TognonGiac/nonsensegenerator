@@ -82,6 +82,11 @@ public class NonsenseGenerator {
     }
 
     private static String generateMiniSentence(List<String> nouns, List<String> verbs, List<String> adjectives) {
-        return "the " + pickRandom(adjectives) + " " + pickRandom(nouns) + " " + pickRandom(verbs);
-    }
+    String verb;
+    do {
+        verb = pickRandom(verbs);
+    } while (verb.equals("is") || verb.equals("has"));
+
+    return "the " + pickRandom(adjectives) + " " + pickRandom(nouns) + " " + verb;
+}
 }
