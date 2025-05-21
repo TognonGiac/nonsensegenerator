@@ -9,6 +9,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.nonsense.dto.SaveRequest;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpStatus;
+
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 @RestController
 @CrossOrigin(origins = "*")// permette richieste da GitHub Pages
 @RequestMapping("/api")
@@ -49,5 +58,25 @@ public class NonsenseController {
         }
 
         return response;
+    }
+
+    @PostMapping("/save")
+    public ResponseEntity<String> savePhrasesToFile(@RequestBody SaveRequest request) {
+        try {
+            Path outputDir = Paths.get("output");
+            if (!Files.exists(outputDir)) {
+                Files.createDirectories(outputDir);
+            }
+
+            String filename = "frasi_" + System.currentTimeMillis() + ".txt";
+            Path outputFile = outputDir.resolve(filename);
+
+            Files.write(outputFile, request.getPhrases());
+
+            return ResponseEntity.ok("Frasi salvate nel file: " + filename);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Errore nel salvataggio");
+        }
     }
 }
