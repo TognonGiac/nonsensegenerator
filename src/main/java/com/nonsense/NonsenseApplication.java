@@ -10,6 +10,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class NonsenseApplication {
    
+   /** Costruttore di default. Non effettua alcuna inizializzazione specifica. */
+   public NonsenseApplication() {
+   }
+   
     /**
     * Metodo main che avvia l'applicazione 
     *
