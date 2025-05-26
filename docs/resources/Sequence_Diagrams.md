@@ -109,8 +109,7 @@ end
 @enduml
 ```
 
-## Azioni post-output: reset, copia, salvataggio
-
+## Azioni post-output: copia, salvataggio
 ![InternalSequenceDiagram4.png](img/diagrams/InternalSequenceDiagram4.png)
 
 ```plantuml
