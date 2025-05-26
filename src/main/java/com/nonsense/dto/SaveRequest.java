@@ -10,6 +10,10 @@ import java.util.List;
 * </p>
 */
 public class SaveRequest {
+    /** Costruttore pubblico di default. */
+    public SaveRequest(){
+    }
+    
     /**
     * Insieme di tutte la frasi da salvare su file.
     * <p>
