@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.nonsense"},{"l":"com.nonsense.controller"},{"l":"com.nonsense.dto"},{"l":"com.nonsense.service"},{"l":"com.nonsense.util"}];updateSearchResults();
