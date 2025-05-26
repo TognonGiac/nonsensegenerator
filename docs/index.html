@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>NONSENSE Generator - Doc</title>
+    <title>Generatore NONSENSE - Doc</title>
     <link rel="shortcut icon" type="x-icon" href="resources/img/icons/logo1.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800,900" rel="stylesheet">
@@ -24,7 +24,7 @@
     <ul class="menu" title="link to the repository">
         <div class="menu__item toggle"><span></span></div>
         <li class="menu__item">
-            <a href="https://github.com/giuliagirotto/NONSENSE-generator" class="link link--white-color;" style="color:white";>
+            <a href="https://github.com/tognongiac/NONSENSE-generator" class="link link--white-color;" style="color:white";>
                 <i class="fa fa-github"></i><span style="margin-left: 4px">Repository GitHub</span>
             </a>
         </li>
@@ -33,8 +33,8 @@
 <div class="wrapper">
     <aside class="doc__nav">
         <ul>
-            <li class="js-btn selected">Manual</li>
-            <li class="js-btn">Specifications</li>
+            <li class="js-btn selected">Manuale</li>
+            <li class="js-btn">Specifiche</li>
             <li class="js-btn">Design</li>
             <li class="js-btn">Testing</li>
             <li class="js-btn">JavaDoc</li>
@@ -46,105 +46,127 @@
         <section class="js-section">
             <h1 class="section__title" style="font-size: 33px;">Manual</h1>
             <!-- INTRODUCTION -->
-            <h2>What's NONSENSE Generator?</h2>
-            <p>
-                NONSENSE Generator allows the creation of absurd sentences based on user-provided text input.<br>
-                Once a sentence is entered, the system performs syntactic analysis to extract the main words and store them in an internal dictionary. 
-                Using these words, the generator produces new sentences by randomly combining subjects, verbs, and complements, thus ensuring original and unpredictable outputs. 
-                The generated sentences are then subjected to a toxicity check through integration with the Google Cloud APIs, to ensure safe and appropriate content.<br>
-                The project also includes features such as regeneration, file saving, copy to clipboard, and interface reset, in order to offer a complete and interactive user experience.
+            <h2>Cos'è "NONSENSE Gnerator"?</h2>
+            <p> NONSENSE Generator è un software che genera frasi grammaticalmente corrette ma semanticamente prive di senso.<br>
+                Il sistema resta in attesa di una frase inserita dall’utente, analizza la struttura sintattica e ne estrae i componenti principali (nomi, verbi, aggettivi), archiviandoli in un dizionario interno.<br>
+                A partire da questo dizionario e da un lessico di base fornito dal sistema, il generatore costruisce frasi originali e imprevedibili combinando elementi linguistici secondo schemi grammaticali predefiniti.<br>
+                Ogni frase viene poi sottoposta a un controllo di tossicità, tramite le API Google Cloud Natural Language, per garantire contenuti sicuri e appropriati.<br>
+                Il progetto include anche funzionalità aggiuntive:
             </p>
-            <p>METTERE FOTO ANTEPRIMA GENERATORE</p>
+            <ul>
+                <li>salvataggio dei risultati su file (.txt)</li>
+                <li>copia rapida negli appunti</li>
+                <li>interfaccia interattiva per l’inserimento e l’elaborazione delle frasi</li>
+            </ul>
+            
+            <img src="resources/img/other/anteprima.jpg" alt="NONSENSE generator" title="generator" width="100%">
             <div class="span-h2"></div>
 
 
             <!-- TECNOLOGIE UTILIZZATE -->
-            <h2>Technologies Used</h2>
+            <h2>Tecnologie usate</h2>
             <table id="Librerie">
                 <tr>
-                    <th><b>Name</b></th>
-                    <th><b>Version</b></th>
-                    <th><b>Description</b></th>
+                    <th><b>Nome</b></th>
+                    <th><b>Versione</b></th>
+                    <th><b>Descrizione</b></th>
                 </tr>
                 <tr>
                     <td align="center">Java</td>
-                    <td align="center">20</td>
-                    <td>Programming environment and language used to develop the application.</td>
+                    <td align="center">17</td>
+                    <td>Ambiente e linguaggio di programmazione utilizzati per sviluppare il software.</td>
                 </tr>
                 <tr>
                     <td align="center">JUnit</td>
-                    <td align="center">5.9.1</td>
-                    <td>Framework for automatic testing of Java classes.</td>
+                    <td align="center">5</td>
+                    <td>Framework per il testing automatico delle classi Java.</td>
+                </tr>
+                 <tr>
+                    <td align="center">Spring Boot</td>
+                    <td align="center">3.2.4</td>
+                    <td>Framework per lo sviluppo di applicazioni modulari e RESTful.</td>
                 </tr>
             </table>
             <p>
-                It's recommended to also consult the section <a href="#JavaDoc">Javadoc</a> in order to better understand the integration of the libraries.
+                E' raccomandato consultare la sezione <a href="#JavaDoc">Javadoc</a> per comprendere meglio l'integrazione delle librerie.
             </p>
             <div class="span-h2"></div>
 
             <!-- SCARICARE ED INSTALLARE IL SOFTWARE -->
-            <h2>Project Description and Implementation</h2>
+            <h2>Descrizione ed implementazione del progetto</h2>
             <p>
-                At the beginning of the project development the specifications were discussed and studied 
-                in order to tackle the design and development phases rigorously.
+               All'inizio dello sviluppo del progetto le specifiche sono state discusse e studiate 
+                per affrontare con rigore le fasi di progettazione e sviluppo.
             </p>
             <p>
-                After completing the <a href="#specifications">specification</a> and <a href="#design">design</a> phase, the development of the sentence generator began.
+                Dopo aver completato la fase di delineamento delle <a href="#specifications">specifiche</a> e del <a href="#design">design</a>, è iniziato lo sviluppo del NONSENSE Generator.
             </p>
             <div class="span-h3"></div>
 
-            <h3>Graphic Interface</h3>
-            <p>DA COMPLETARE</p>
+            <h3>Interfaccia Grafica</h3>
+            <p>L’interfaccia grafica del progetto è strutturata principalmente tramite il file <code>index.html</code>, che definisce la struttura base e i componenti visuali della pagina web.<br>
+                <b>Struttura HTML</b>(<code>index.html</code>):<br>
+                La pagina si compone di una struttura semplice e funzionale, organizzata con elementi HTML standard. Tra gli elementi principali si trovano:
+            </p>
+            <ul>
+                <li>Un contenitore principale che racchiude tutta l’interfaccia, per facilitare la gestione del layout e il posizionamento degli elementi.</li>
+                <li>Pulsanti interattivi che permettono all’utente di generare testo ed eseguire altre funzioni.</li>
+                <li>Un’area di visualizzazione, dove viene mostrato il testo generato dall’applicazione.</li>
+            </ul>
+            <p><b>Stile grafico</b>(<code>style.css</code>):<br>
+                L’aspetto visivo è gestito dal file CSS, che definisce le regole di stile per i vari elementi HTML. Le caratteristiche principali includono:
+            </p>
+            <ul>
+                <li>Uso di layout responsive e spaziature per garantire una disposizione chiara e leggibile degli elementi su diverse dimensioni di schermo.</li>
+                <li>Personalizzazione di colori, font, bordi e background per creare un’interfaccia esteticamente gradevole e coerente con il tema del progetto.</li>
+                <li>Definizione di stili per i pulsanti e le aree di testo per migliorarne la visibilità e l’interattività.</li>
+            </ul>
+            <p><b>Comportamento dinamico</b>(<code>script.js</code>):<br>
+                La logica di interazione con l’utente è gestita dal file JavaScript, che implementa:
+            </p>
+            <ul>
+                <li>La gestione degli eventi sui pulsanti, in particolare la generazione dinamica di testo o altre azioni specifiche al click dell’utente.</li>
+                <li>L’aggiornamento dell’area di output in tempo reale, consentendo di visualizzare immediatamente i risultati delle azioni eseguite.</li>
+                <li>Possibili controlli sulla validità o formattazione del testo generato, per assicurare coerenza e correttezza del contenuto visualizzato.</li>
+            </ul>
             <div class="span-h3"></div>
 
-            <h3>Generate</h3>
+            <h3>Genera</h3>
             <table>
                 <tr>
-                    <td><b>Generate the required sentences</b></td>
-                    <td>Using the button "Generate", it's possible to generate the requested amount of nonsense sentences from the given sentence.</td>
+                    <td><b>Generazione delle frasi richieste</b></td>
+                    <td>Utilizzando il pulsante "Genera" è possibile generare il numero richiesto di frasi NONSENSE.</td>
                 </tr>
             </table>
             <div class="span-h3"></div>
-            <h3>Reset</h3>
+            <h3>Copia</h3>
             <table>
                 <tr>
-                    <td><b>Reset the generator</b></td>
-                    <td>Using the button "Reset", it's possible to reset the generator to start the insertion again.</td>
+                    <td><b>Copia le frasi generate</b></td>
+                    <td>Utilizzando il pulsante "Copia" è possibile copiare le frasi generate, sia singolarmente che tutte insieme.</td>
                 </tr>
             </table>
             <div class="span-h3"></div>
-            <h3>Copy</h3>
+            <h3>Salva</h3>
             <table>
                 <tr>
-                    <td><b>Copy the generated sentences</b></td>
-                    <td>Using the button "Copy", it's possible to copy the generated sentences, either individually or all together.</td>
-                </tr>
-            </table>
-            <div class="span-h3"></div>
-            <h3>Save</h3>
-            <table>
-                <tr>
-                    <td><b>Save the generated sentences</b></td>
-                    <td>Using the button "Save", it's possible to save the generated sentences in a text file.</td>
+                    <td><b>Salvataggio delle frasi generate</b></td>
+                    <td>Utilizzando il pulsante "Salva" è possibile salvare le frasi generate in un file di testo.</td>
                 </tr>
             </table>
             <div class="span-h3"></div>
 
             <p>
-                At the end of the development, code refactoring was performed to enable efficient <a href="#test">testing</a>, 
-                including the use of JUnit. 
+                Al termine dello sviluppo è stato eseguito il <a href="#test">testing</a>, sia manualmente sia utilizzando JUnit.
             </p>
             <div class="span-h2"></div>
 
-            <!-- SCARICARE ED INSTALLARE IL SOFTWARE -->
-            <h2>Download Software</h2>
+            <!-- SCARICARE IL SOFTWARE -->
+            <h2>Download del Software</h2>
             <h3>IDE</h3>
             <p>
-                To use the generator you need to clone the <b>repository at the link on the top right side of the page</b>, 
-                then open the project using a <b>IDE</b> and execute the file <code>Main.java</code> at the following path:
-                <b>src/main/java/com/nonsense/Main.java</b>
-                <br><br>
-                Per l’esecuzione è necessaria l'installazione della <b>jdk</b> (preferibilmente <b>versione 20</b>).
+                Per utilizzare il NONSENSE Generator bisogna clonare la <b>repository GitHub presente nel link collocato in alto a destra</b>, 
+                aprire il progetto utilizzando un <b>IDE</b> e andare al seguente percorso: <b>localhost:8080</b><br>
             </p>
             <div class="span-h2"></div>
 
