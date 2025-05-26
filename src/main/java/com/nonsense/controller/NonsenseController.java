@@ -20,14 +20,12 @@ import java.nio.file.Paths;
 
 /**
 * Controller REST principale per la gestione delle richieste relative al generatore di frasi nonsense.
-* <p>
-* Questo Controller espone endpoint RESTful per:
+* <p> Questo Controller espone endpoint RESTful per: </p>
 * <ul>
 *    <li>Generare frasi nonsense basate sull'input dato dall'utente</li>
 *    <li>Salvare la lista delle frasi su file</li>
 *    <li>Controllare la tossicità della frase</li>
 * </ul>
-* </p>
 */
 @RestController
 @CrossOrigin(origins = "*")// permette richieste da GitHub Pages
@@ -51,7 +49,7 @@ public class NonsenseController {
     *
     *<p>
     * Questo endpoint: 
-    * permette di ricevere una frase in input dall'utente, analizza la frase sintatticmante, e genera
+    * permette di ricevere una frase in input dall'utente, analizza la frase sintatticamente, e genera
     * un numero di frasi nonsense decide dall'utente utilizzando le parole estratte.
     * </p>
     
@@ -96,8 +94,7 @@ public class NonsenseController {
 
     /**
     * Endpoint POST per salvare le frasi nonsense generate su un file di testo locale.
-    * <p>
-    * Questo endpoint permette all'utente di salvare le frasi generate all'interno di un file di testo.
+    * <p> Questo endpoint permette all'utente di salvare le frasi generate all'interno di un file di testo. </p>
     *
     * @param request oggetto {@link SaveRequest} contiene la lista di frasi generate da salvare.
     * @return {@link ResponseEntity} : una risposta HTTP con un messaggio che indica se il salvataggio è avvenuto con successo o se si è presentato un errore.
