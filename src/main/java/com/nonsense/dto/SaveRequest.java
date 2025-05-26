@@ -3,11 +3,19 @@ package com.nonsense.dto;
 import java.util.List;
 
 /**
-* Data Transfer Object utilizzato per richevere una richiesta che contine una lista di frasi da salvare su un file
+* Data Transfer Object (DTO) per le richieste di salvataggio di frasi nonsense.
+* <p>
+* Questa classe rappresenta il payload delle richieste HTTP che contengono 
+* una collezione di frasi da salvare u un file.
+* </p>
 */
 public class SaveRequest {
     /**
-    * Insieme di tutte la frasi che voglio salvare.
+    * Insieme di tutte la frasi da salvare su file.
+    * <p>
+    * Contiene la collezione di stringhe che rappresentano le frasi nonsense
+    * che l'utente vuole salvare su file.
+    * <p>
     */
     private List<String> phrases;
 
@@ -23,7 +31,7 @@ public class SaveRequest {
     /**
     * Imposta la lista di frasi da salvare.
     *
-    * @param phrases lista di stringhe contentente le frasi
+    * @param phrases    lista di stringhe contentente le frasi
     */
     public void setPhrases(List<String> phrases) {
         this.phrases = phrases;
