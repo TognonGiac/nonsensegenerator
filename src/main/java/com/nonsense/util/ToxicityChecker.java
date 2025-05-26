@@ -16,6 +16,11 @@ import org.json.JSONObject;
 */
 public class ToxicityChecker {
 
+    /** Costruttore privato per evitare l'istanziazione della classe utility.*/
+    private ToxicityChecker(){
+        //previene l'istanzazione
+    }
+    
     /**
      * Verifica se la frase è considerata tossica utilizzando l'API Google Cloud Natural Language.
      *
