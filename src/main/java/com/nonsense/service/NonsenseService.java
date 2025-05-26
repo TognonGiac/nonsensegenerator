@@ -36,6 +36,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class NonsenseService {
 
+    /** Costruttore pubblico di defalut.
+    * Viene usato da Spring per creare l'istanza del serivizo.
+    */
+    public NonsenseService(){
+    }
+    
     /**
     * Vocabolario in memoria per i nomi, condiviso tra tutte le istanze.
     */
