@@ -124,9 +124,6 @@ participant FileWriter
 == Copia frasi ==
 Output -> Clipboard : copia(frasi)
 
-== Reset ==
-Output -> Output : clear()
-
 == Salva su file ==
 Output -> FileWriter : salvaTXT(frasi)
 @enduml
