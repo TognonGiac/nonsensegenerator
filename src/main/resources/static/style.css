@@ -1,16 +1,43 @@
+html, body {
+  height: 100%;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  padding: 20px;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #ff416c, #9933ff, #00c6ff);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.main {
+  max-width: 1000px;
+  margin: auto;
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.robot img {
+  max-width: 200px;
+  height: auto;
 }
 
 .container {
   max-width: 600px;
-  margin: auto;
+  width: 100%;
   background: white;
   padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.top-button {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 textarea {
@@ -20,7 +47,6 @@ textarea {
   padding: 10px;
   font-size: 16px;
 }
-
 button {
   padding: 10px 20px;
   font-size: 16px;
@@ -31,11 +57,40 @@ button {
   cursor: pointer;
 }
 
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
 button:hover {
   background-color: #218838;
 }
 
-#output {
-  margin-top: 20px;
-  font-size: 18px;
+#output li {
+  background-color: #f8f8f8;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  list-style: none;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+h1 {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
 }
