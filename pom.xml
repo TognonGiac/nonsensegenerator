@@ -49,13 +49,34 @@
          </dependency>
 </dependencies>
 
-      <build>
-          <plugins>
-              <plugin>
-                      <groupId>org.springframework.boot</groupId>
-                      <artifactId>spring-boot-maven-plugin</artifactId>
-                      <version>3.2.5</version>
-              </plugin>
-         </plugins>
+         <build>
+                  <plugins>
+                           <!-- Plugin Spring Boot -->
+                           <plugin>
+                                    <groupId>org.springframework.boot</groupId>
+                                    <artifactId>spring-boot-maven-plugin</artifactId>
+                                    <version>3.2.5</version>
+                           </plugin>
+
+                           <!-- Plugin javadoc -->
+                           <plugin>
+                                    <groupId>org.apache.maven.plugins</groupId>
+                                    <artifactId>maven-javadoc-plugin</artifactId>
+                                    <version>3.6.3</version>
+                                    <configuration>
+                                            <reportOutputDirectory>${project.basedir}/docs</reportOutputDirectory>
+                                            <doctitle>Nonsense Generator API</doctitle>
+                                            <windowtitle>Nonsense Generator</windowtitle>
+                                    </configuration>
+                                    <executions>
+                                            <execution>
+                                              <id>attach-javadocs</id>
+                                              <goals>
+                                                      <goal>javadoc</goal>
+                                              </goals>
+                                            </execution>
+                                    </executions>
+                           </plugin>
+                  </plugins>
       </build>
 </project>
