@@ -5,9 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
 * Classe principale dell'applicazione Nonsense.
-* <p>
-* Questa classe si occupa della configurazione automatica e dell'avvio del container Spring.
-* </p>
+* <p> Questa classe si occupa della configurazione automatica e dell'avvio del container Spring. </p>
 */
 @SpringBootApplication
 public class NonsenseApplication {
