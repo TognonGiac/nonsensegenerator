@@ -9,15 +9,25 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
-* Utility per controllare se una frase è tossica utilizzano l'API Google ModerateText
+* Utility class per il controllo della tossicità del testo utilizzando l'API Google Cloud Natural Language.
+* <p>
+* Questa classe fornisce dei metodi per analizzare il contenuto testuale e determianre se contiene
+* linguaggio tossico utilizzando il servizio ModerateText di Google.
 */
 public class ToxicityChecker {
 
     /**
-     * Verifica se la frase è considerata tossica da Google ModerateText API
+     * Verifica se la frase è considerata tossica utilizzando l'API Google Cloud Natural Language.
      *
-     * @param text : frase da analizzare
-     * @param apikey : chiave API Google valida per chiamare il servizio
+     * <p>
+     * Il metodo invia una richiesta HTTP POST all'endpoint ModerateText di Google e analizza
+     * la risposta per determinare se il contenuto della frase supera la soglia di tossicità.
+     * Un testo è considerato tossico se almeno una delle categorie di moderazione
+     * restituisce un livello di confidenza >= 0.5.
+     * </p>
+     * 
+     * @param text          frase da analizzare
+     * @param apiKey        chiave API Google valida per chiamare il servizio
      * @return true se la frase è considerata tossica con confidenza >= 0.5, false altrimenti
      * @throws Exception in caso di errori nella connessione o nella risposta dell'API
      */
