@@ -18,6 +18,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+/**
+* Controller REST principale per la gestione delle richieste relative al generatore di frasi nonsense.
+* Espone endpoint per generare e salvare frasi.
+*/
 @RestController
 @CrossOrigin(origins = "*")// permette richieste da GitHub Pages
 @RequestMapping("/api")
@@ -25,10 +29,24 @@ public class NonsenseController {
 
     private final NonsenseService service;
 
+    /**
+    * Costruttore del controller
+    * 
+    * @param service istanza di {@link NonsenseService} per la generazione delle frasi
+    */
     public NonsenseController(NonsenseService service) {
         this.service = service;
     }
-    
+
+    /**
+    * Endpoint POST per generare delle frasi nonsense partendo da una frase ottenuta in input dall'utente.
+    *
+    * @param payload -> oggetto JSON che contiene:
+    *                     - "sentence" : frase di input
+    *                     - "count" : numero di frasi che l'utente vuole generare (min 1 - max 10)
+    * @return una lista di frasi generate o un messaggio di errore
+    * @throws Exception se durante la generazione di una frase nonsense si verifica un errore
+    */
     @PostMapping("/generate")
     public Map<String, Object> generateSentences(@RequestBody Map<String, Object> payload) throws Exception {
         String sentence = (String) payload.get("sentence");
@@ -60,6 +78,12 @@ public class NonsenseController {
         return response;
     }
 
+    /**
+    * Endpoint POST per salvare le frasi nonsense generate su un file di testo locale.
+    *
+    * @param request oggetto {@link SaveRequest} contiene la lista di frasi generate da salvare.
+    * @return una risposta HTTP con un messaggio che indica se il salvataggio è avvenuto con successo o se è avvenuto un errore.
+    */
     @PostMapping("/save")
     public ResponseEntity<String> savePhrasesToFile(@RequestBody SaveRequest request) {
         try {
