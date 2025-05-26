@@ -24,8 +24,7 @@ import org.springframework.stereotype.Service;
 
 /**
 * Service Spring per la generazione di frasi nonsense basate sull'analisi sintattica dei testi in input.
-* <p>
-* Questo servizio implementa un sistema per:
+* <p> Questo servizio implementa un sistema per: </p>
 * <ul>
 *    <li>Analizzare le frasi ottenute dall'utente in input</li>
 *    <li>Estrarre e classificare parole (nouns, verbs, adjective)</li>
@@ -33,7 +32,6 @@ import org.springframework.stereotype.Service;
 *    <li>Filtrare le frasi tossiche utilizzando l'API Google</li>
 *    <li>Mostrare in output le nuove frasi nonsense generate</li>
 *</ul>
-*</p>
 */
 @Service
 public class NonsenseService {
@@ -65,15 +63,14 @@ public class NonsenseService {
     *<p>
     * Questa chiave deve essere configurata nel file {@code application.properties}
     * Necessaria per l'analisi sintattica e il controllo della tossicità.
+    * </p>
     */
     @Value("${google.api.key}")
     private String apiKey;
 
     /** 
     * Genera frasi nonsense a partire da una frase di input fornita dall'utente.
-    * <p>
-    * Questo metodo implementa il processo di generazione di una frase nonsense:
-    * </p>
+    * <p> Questo metodo implementa il processo di generazione di una frase nonsense: </p>
     * <ol>
     *    <li><strong>Validazione:</strong> Verifica la presenza della chiave API</li>
     *    <li><strong>Analisi sintattica:</strong> Estrae nomi, verbi e aggettivi dalla frase</li>
@@ -159,11 +156,9 @@ public class NonsenseService {
     /**
     * Restituisce l'insieme dei nomi raccolti finora.
     *
-    * <p>
-    * Questo vocabolario globale contiene tutti i nomi estratti dalle frasi
-    * analizzate dall'avvio dell'applicazione.
-    * </p>
-    
+    * <p> Questo vocabolario globale contiene tutti i nomi estratti dalle frasi
+    * analizzate dall'avvio dell'applicazione. </p>
+    *
     * @return    insieme di nomi
     */
     public static Set<String> getGlobalNouns() { return globalNouns; }
@@ -171,11 +166,9 @@ public class NonsenseService {
     /**
     * Restituisce l'insieme dei verbi raccolti finora.
     *
-    * <p>
-    * Questo vocabolario globale contiene tutti i verbi estratti dalle frasi
-    * analizzate dall'avvio dell'applicazione.
-    * </p>
-    
+    * <p> Questo vocabolario globale contiene tutti i verbi estratti dalle frasi
+    * analizzate dall'avvio dell'applicazione. </p>
+    *
     * @return    insieme di verbi
     */
     public static Set<String> getGlobalVerbs() { return globalVerbs; }
@@ -183,11 +176,9 @@ public class NonsenseService {
     /**
     * Restituisce l'insieme degli aggettivi raccolti finora.
     *
-    * <p>
-    * Questo vocabolario globale contiene tutti gli aggettivi estratti dalle frasi
-    * analizzate dall'avvio dell'applicazione.
-    * </p>
-    
+    * <p> Questo vocabolario globale contiene tutti gli aggettivi estratti dalle frasi
+    * analizzate dall'avvio dell'applicazione. </p>
+    *
     * @return    insieme di aggettivi
     */
     public static Set<String> getGlobalAdjectives() { return globalAdjectives; }
