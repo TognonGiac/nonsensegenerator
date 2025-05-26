@@ -6,16 +6,44 @@ import java.io.InputStreamReader;
 import java.util.*;
 
 /**
-* Classe che genera frasi nonsense.
-* Data una frasi presa in input da un utente, carica dizionari di nomi, verbi e aggettivi.
-* Genera frasi casuali usando parole presenti nella frase in input, aggiungendone altre.
+* Generatore di frasi nonsense basato su template e dizionari di parole.
+*
+* <p>
+* Questa classe genera frasi nonsense partendo da una frase presa in input da un utente.
+* Avviene un analisi sintattica della frase e si aggiungono le parole in dizionari divisi per tipo (nomi, verbi e aggettivi).
+* Vengono generate frasi casuali usando parole presenti nella frase in input, aggiungendone altre.
+* </p>
 */
 public class NonsenseGenerator {
 
-    /** Liste contententi parole e template caricati dai file di risorse */
+    /** Dizionario dei sostantivi caricato dal file di risorse {@code /data/nouns.txt}
+    * <p>
+    * Questa lista contiene tutti i sostantivi utilizzabili per la generazione di nuove frasi nonsense.
+    * </p>
+    */
     private static final List<String> nouns = new ArrayList<>();
+   
+    /** Dizionario dei verbi caricato dal file di risorse {@code /data/verbs.txt}
+    * <p>
+    * Questa lista contiene tutti i verbi utilizzabili per la generazione di nuove frasi nonsense.
+    * </p>
+    */
     private static final List<String> verbs = new ArrayList<>();
+    
+    /** Dizionario dei sostantivi caricato dal file di risorse {@code /data/adjectives.txt}
+    * <p>
+    * Questa lista contiene tutti gli aggettivi utilizzabili per la generazione di nuove frasi nonsense.
+    * </p>
+    */
     private static final List<String> adjectives = new ArrayList<>();
+    
+    /** Template delle strutture delle frasi caricati dal file {@code /data/sentence_structures.txt}
+    * <p>
+    * Ogni template è una stringa che definisce la struttura di una frase utilizzando
+    * placeholder come {@code [noun]}, {@code [verb]} e {@code [adjective]} che vengono 
+    * sostituiti durante la generazione della frase.
+    * </p>
+    */
     private static final List<String> templates = new ArrayList<>();
     
     /** Generatore di numeri casuali per selezioni random */
@@ -33,7 +61,24 @@ public class NonsenseGenerator {
         "tries", "hopes", "helps", "seems", "appears", "becomes"
     );
 
-    //blocco statico che carica le liste di parole e template all'avvio della classe
+    /** 
+    * Blocco di inizializzazione statica per il caricamento dei dizionari e template.
+    * <p>
+    * Questo blocco viene eseguito automaticamente al primo accesso alla classe
+    * e si occupa di caricare tutti i file di risorse necessari per il funzionamento
+    * del programma di generazione frasi nonsense. 
+    * In caso di errore durante il caricamento, stampa un messaggio
+    * di errore.
+    * </p>
+    *
+    * <p> I file caricati, in sequenza, sono: </p>
+    * <ol>
+    *    <li>Dizionario dei sostantivi</li>
+    *    <li>Dizionario dei verbi</li>
+    *    <li>Dizionario degli aggettivi</li>
+    *    <li>Template delle strutture delle frasi</li>
+    * </ol>
+    */
     static {
         try {
             loadList("/data/nouns.txt", nouns);
@@ -46,11 +91,17 @@ public class NonsenseGenerator {
     }
 
     /**
-    * Carica da un file di risorse una lista di stringhe (una per riga) e le aggiunge alla lista target.
-    * 
-    * @param path : percorso del file di risorse
-    * @param target : lista di destinazione in cui inserire le righe lette
-    * @throws IOException se si verifica un errore di lettura
+    * Carica il contenuto di un file di risorse in una lista di stringhe.
+    *
+    * <p>
+    * Questo metodo legge un file di testo dalla directory delle risorse, processando ogni riga come un elemento separato.
+    * Le righe vuote o quelle che contengono solo spazi vengono scartate,
+    * mentre gli spazi iniziali e finali vengono rimossi dalle righe valide.
+    * </p>
+    *
+    * @param path      percorso del file di risorse relativo al classpath
+    * @param target    lista di destinazione in cui inserire le righe lette
+    * @throws IOException se si verifica un errore durante la lettura del file
     */
     private static void loadList(String path, List<String> target) throws IOException {
         try (BufferedReader reader = new BufferedReader(
@@ -63,14 +114,18 @@ public class NonsenseGenerator {
     }
     
     /**
-    * Genera una lista di frasi nonsense basate sulle parole e sulla quantità specificata.
-    * Aggiunge le parole di base a quelle prese dalla frase ottenuta in input.
-    * 
-    * @param userNouns : insieme di nomi forniti dall'utente (può essere null)
-    * @param userVerbs : insieme di verbi forniti dall'utente (può essere null) 
-    * @param userAdjectives : insieme di aggettivi forniti dall'utente (può essere null)
-    * @param count : numero di frasi da generare
-    * @return lista di frasi generate casualmente
+    * Genera una lista di frasi nonsense basate sulle parole fornite e sulla quantità specificata.
+    *
+    * <p>
+    * Metodo princpiale della classe che controlla il processo di generazione delle frasi nonsense. 
+    * Aggiunge alle parole di base quelle prese dalla frase ottenuta in input, per poi utilizzare i template per creare delle frasi nonsense.
+    * </p>
+    *
+    * @param userNouns            insieme di nomi forniti dall'utente (può essere null)
+    * @param userVerbs            insieme di verbi forniti dall'utente (può essere null) 
+    * @param userAdjectives       insieme di aggettivi forniti dall'utente (può essere null)
+    * @param count                numero di frasi da generare
+    * @return lista contenente {@code count} frasi generate casualmente
     */
     public static List<String> generateSentences(
         List<String> userNouns,
@@ -99,14 +154,22 @@ public class NonsenseGenerator {
     }
 
     /**
-    * Riemepie un template sostituendo i placeholder [noun], [verb], [adjective], [sentence]
+    * Sostituisce i placeholder [noun], [verb], [adjective], [sentence] all'interno di un template
     * con parole scelte casualmente dall'insieme di parole fornite.
-    * 
-    * @param template : stringa template che contiene i placeholder
-    * @param nouns : insieme di nomi da cui pescare casualmente
-    * @param verbs : insieme di verbi da cui perscare casualmente
-    * @param adjective : insieme di aggettivi da cui perscare casualmente
-    * @return frase generata random 
+    *
+    * <p> I placeholder sono: </p>
+    * <ul>
+    *    <li>{@code [noun]} - che viene sostituito con un sostantivo casuale</li>
+    *    <li>{@code [verb]} - che viene sostituito con un verbo casuale</li>
+    *    <li>{@code [adjective]} - che viene sostituito con un aggettivo casuale</li>
+    *    <li>{@code [sentence]} - che viene sostituito con una mini-frase generata automaticamnte</li>
+    * </ul>
+    *
+    * @param template     stringa template che contiene i placeholder
+    * @param nouns        insieme di nomi da pescare casualmente
+    * @param verbs        insieme di verbi da pescare casualmente
+    * @param adjective    insieme di aggettivi da pescare casualmente
+    * @return frase completa con i placeholder sostituiti da parole casuali 
     */
     private static String fillTemplate(String template, List<String> nouns, List<String> verbs, List<String> adjectives) {
         String sentence = template;
@@ -128,20 +191,20 @@ public class NonsenseGenerator {
     /**
     * Restituisce un elemento casuale dalla lista fornita.
     *
-    * @param list : lista di elementi
-    * @return elemento scelto casualmente
+    * @param list    lista di parametri da cui selezionare l'elemento. Non può essere {@code null} o vuota
+    * @return elemento scelto casualmente dalla lista
     */
     private static String pickRandom(List<String> list) {
         return list.get(rand.nextInt(list.size()));
     }
 
     /**
-    * Genera una mini frase composta da "The" + aggettivo + sostantivo + verbo.
-    * Esclude verbi presenti nella lista proibita per evitare forme grammaticali scorrette.
+    * Genera una mini-frase composta da "The" + aggettivo + sostantivo + verbo.
+    * <p> Il metodo implementa un sistema che esclude verbi presenti nella lista proibita per evitare forme grammaticali scorrette. </p>
     *
-    * @param nouns : insieme di sostantivi
-    * @param verbs : insieme di verbi 
-    * @param adjective : insieme di aggettivi
+    * @param nouns        lista dei sostantivi. Non può essere {@code null} o vuota
+    * @param verbs        lista dei verbi. Non può essere {@code null} o vuota
+    * @param adjective    lista degli aggettivi. Non può essere {@code null} o vuota 
     * @return mini-frase generata casualmente
     */
     private static String generateMiniSentence(List<String> nouns, List<String> verbs, List<String> adjectives) {
