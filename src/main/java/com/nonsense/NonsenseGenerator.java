@@ -61,6 +61,10 @@ public class NonsenseGenerator {
         "tries", "hopes", "helps", "seems", "appears", "becomes"
     );
 
+    /**Costruttore privato per impedire l'istanziazione della classe di utility.*/
+    private NonsenseGenerator(){
+    }
+    
     /** 
     * Blocco di inizializzazione statica per il caricamento dei dizionari e template.
     * <p>
