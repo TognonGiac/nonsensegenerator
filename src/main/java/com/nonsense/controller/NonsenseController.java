@@ -20,19 +20,27 @@ import java.nio.file.Paths;
 
 /**
 * Controller REST principale per la gestione delle richieste relative al generatore di frasi nonsense.
-* Espone endpoint per generare e salvare frasi.
+* <p>
+* Questo Controller espone endpoint RESTful per:
+* <ul>
+*    <li>Generare frasi nonsense basate sull'input dato dall'utente</li>
+*    <li>Salvare la lista delle frasi su file</li>
+*    <li>Controllare la tossicità della frase</li>
+* </ul>
+* </p>
 */
 @RestController
 @CrossOrigin(origins = "*")// permette richieste da GitHub Pages
 @RequestMapping("/api")
 public class NonsenseController {
 
+    /** Servizio per la generazione di frasi nonsense. */
     private final NonsenseService service;
 
     /**
     * Costruttore del controller
     * 
-    * @param service istanza di {@link NonsenseService} per la generazione delle frasi
+    * @param service istanza del servizio per la generazione delle frasi nonsense
     */
     public NonsenseController(NonsenseService service) {
         this.service = service;
@@ -41,9 +49,17 @@ public class NonsenseController {
     /**
     * Endpoint POST per generare delle frasi nonsense partendo da una frase ottenuta in input dall'utente.
     *
-    * @param payload -> oggetto JSON che contiene:
-    *                     - "sentence" : frase di input
-    *                     - "count" : numero di frasi che l'utente vuole generare (min 1 - max 10)
+    *<p>
+    * Questo endpoint: 
+    * permette di ricevere una frase in input dall'utente, analizza la frase sintatticmante, e genera
+    * un numero di frasi nonsense decide dall'utente utilizzando le parole estratte.
+    * </p>
+    
+    * @param payload     mappa JSON che contiene i parametri della richiesta:
+    *                    <ul> 
+    *                        <li>{@code "sentence"} (String) : frase in input da analizzare</li>
+    *                        <li>{@code "count"} (Number) : numero di frasi che l'utente vuole generare (min 1 - max 10)</li>
+    *                    </ul>
     * @return una lista di frasi generate o un messaggio di errore
     * @throws Exception se durante la generazione di una frase nonsense si verifica un errore
     */
@@ -80,9 +96,11 @@ public class NonsenseController {
 
     /**
     * Endpoint POST per salvare le frasi nonsense generate su un file di testo locale.
+    * <p>
+    * Questo endpoint permette all'utente di salvare le frasi generate all'interno di un file di testo.
     *
     * @param request oggetto {@link SaveRequest} contiene la lista di frasi generate da salvare.
-    * @return una risposta HTTP con un messaggio che indica se il salvataggio è avvenuto con successo o se è avvenuto un errore.
+    * @return {@link ResponseEntity} : una risposta HTTP con un messaggio che indica se il salvataggio è avvenuto con successo o se si è presentato un errore.
     */
     @PostMapping("/save")
     public ResponseEntity<String> savePhrasesToFile(@RequestBody SaveRequest request) {
