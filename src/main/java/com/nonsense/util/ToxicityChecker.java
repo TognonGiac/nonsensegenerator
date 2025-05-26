@@ -8,10 +8,18 @@ import java.util.Scanner;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+/**
+* Utility per controllare se una frase è tossica utilizzano l'API Google ModerateText
+*/
 public class ToxicityChecker {
 
     /**
-     * Restituisce true se la frase è considerata tossica da Google ModerateText API
+     * Verifica se la frase è considerata tossica da Google ModerateText API
+     *
+     * @param text : frase da analizzare
+     * @param apikey : chiave API Google valida per chiamare il servizio
+     * @return true se la frase è considerata tossica con confidenza >= 0.5, false altrimenti
+     * @throws Exception in caso di errori nella connessione o nella risposta dell'API
      */
     public static boolean isToxic(String text, String apiKey) throws Exception {
         String endpoint = "https://language.googleapis.com/v1beta2/documents:moderateText?key=" + apiKey;
@@ -19,6 +27,7 @@ public class ToxicityChecker {
         // Escape per evitare problemi con doppi apici
         String safeText = text.replace("\"", "\\\"");
 
+        // Corpo della richiesta JSON
         String body = """
         {
           "document": {
@@ -28,6 +37,7 @@ public class ToxicityChecker {
         }
         """.formatted(safeText);
 
+        // Apertura della connessione HTTP POST
         HttpURLConnection connection = (HttpURLConnection) new URL(endpoint).openConnection();
         connection.setRequestMethod("POST");
         connection.setDoOutput(true);
@@ -43,6 +53,7 @@ public class ToxicityChecker {
                 ? connection.getInputStream()
                 : connection.getErrorStream();
 
+        // Lettura della risposta JSON
         try (Scanner scanner = new Scanner(is).useDelimiter("\\A")) {
             String json = scanner.hasNext() ? scanner.next() : "";
 
