@@ -155,7 +155,7 @@
                     <td>Utilizzando il pulsante "Salva" è possibile salvare le frasi generate in un file di testo.</td>
                 </tr>
             </table>
-            <div class="span-h3"></div>
+            <div class="span-h3"></div
 
             <p>
                 Al termine dello sviluppo è stato eseguito il <a href="#test">testing</a>, sia manualmente sia utilizzando JUnit.
@@ -203,12 +203,11 @@
             <p>La costruzione degli oggetti frase avviene in modo centralizzato all’interno del servizio. In forma implicita, la logica è coerente con il pattern.</p>
             
             <h4>Adapter</h4>
-            <p>La classe <code>ToxicityChecker</code> rappresenta un Adapter rispetto alle API Google Cloud Natural Language. Fornisce un'interfaccia interna: <code>isToxic(String text)</code> che nasconde i dettagli di implementazione dell'API esterna e le sue complessità, semplificando l'uso da parte del sistema.<p>
+            <p>La classe <code>ToxicityChecker</code> rappresenta un Adapter rispetto alle API Google Cloud Natural Language. Fornisce un'interfaccia interna: <code>isToxic(String text)</code> che nasconde i dettagli di implementazione dell'API esterna e le sue complessità, semplificando l'uso da parte del sistema.</p>
             
             <h4>Facade/h4>
-            <p>La classe <code>NonsenseService</code> può essere vista anche come Facade, poiché fornisce un’interfaccia semplificata e unificata al sistema di generazione: coordina l’analisi, la costruzione della frase, e la verifica di tossicità, nascondendo i dettagli dei moduli sottostanti al Controller.
+            <p>La classe <code>NonsenseService</code> può essere vista anche come Facade, poiché fornisce un’interfaccia semplificata e unificata al sistema di generazione: coordina l’analisi, la costruzione della frase, e la verifica di tossicità, nascondendo i dettagli dei moduli sottostanti al Controller.</p>
             <div class="span-h2"></div>
-
         </section>
 
         <hr/>  <!-- ---------------------------------------------------------------------- -->
