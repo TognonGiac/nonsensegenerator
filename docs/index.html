@@ -46,7 +46,7 @@
         <section class="js-section">
             <h1 class="section__title" style="font-size: 33px;">Manuale</h1>
             <!-- INTRODUCTION -->
-            <h2>Cos'è "NONSENSE Gnerator"?</h2>
+            <h2>Cos'è "NONSENSE Generator"?</h2>
             <p> NONSENSE Generator è un software che genera frasi grammaticalmente corrette ma semanticamente prive di senso.<br>
                 Il sistema resta in attesa di una frase inserita dall’utente, analizza la struttura sintattica e ne estrae i componenti principali (nomi, verbi, aggettivi), archiviandoli in un dizionario interno.<br>
                 A partire da questo dizionario e da un lessico di base fornito dal sistema, il generatore costruisce frasi originali e imprevedibili combinando elementi linguistici secondo schemi grammaticali predefiniti.<br>
@@ -175,11 +175,23 @@
             <p>
                 Per utilizzare NONSENSE Generator si raccomanda di:
                 <ol>
-                    <li>Clonare la repository presente nel <a href="https://github.com/tognongiac/NONSENSE-generator" class="link";>link </a>in alto a destra;</li>
-                    <li>aprire il progetto utilizzando un <b>IDE</b>;</li>
-                    <li>andare al seguente percorso <code>nonsensegenerator/src/main/resources/application.properties</code> e modificare la voce <b>yourkey</b> con la propria API key.</li>
-                    <li>infine, per visualizzare il generatore, digitare su browser: <b>localhost:8080</b></li>
+                    <li>Clonare il progetto da GitHub in una cartella a piacere: <code>git clone https://github.com/TognonGiac/nonsensegenerator.git</code> </li>
+                    <li>Configurare la propria API key Google:</li>
+                    <ol> 
+                        <li>aprire il file: <code>nonsensegenerator/src/main/resources/application.properties</code></li>
+                        <li>si vedrá la riga: <code>google.api.key=yourkey</code> <i>"inizia con AIza"</i></li>
+                        <li>inserire invece di yourkey <i>"inizia con AIza"</i> la propria key</li>
+                    </ol>
+                    <li>Avviare il progetto da terminale usando <b>Maven Wrapper</b>:</li>
+                    <ul>
+                        <li>Su <b>Linux/macOS</b>: <code>./mvnw spring-boot:run</code></li>
+                        <li>Su <b>Windows</b> <i>(PowerShell o cmd)</i>: <code>mvnw.cmd spring-boot:run</code></li>
+                    </ul>
                 </ol>
+            <hr>
+            <p>
+                aaaaaaa
+            </p>
             </p>
             <div class="span-h2"></div>
 
