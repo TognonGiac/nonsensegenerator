@@ -13,31 +13,31 @@ Per visualizzare le User Stories su Jira --> https://giuliagirotto.atlassian.net
 
 Per utilizzare NONSENSE Generator si raccomanda di:
 
-1) Clona il progetto da GitHub in una cartella a piacere:
+1) Clonare il progetto da GitHub in una cartella a piacere:
    git clone https://github.com/TognonGiac/nonsensegenerator.git
 
-2) Configura la tua API key Google:
-      - Apri il file: nonsensegenerator/src/main/resources/application.properties
-      - Vedrai la riga:      google.api.key=yourkey "inizia con AIza"
-      - Inserisci al posto di yourkey "inizia con AIza" la tua effettiva key
+2) Configurare la tua API key Google:
+      - Aprire il file: nonsensegenerator/src/main/resources/application.properties
+      - Si vedrà la riga:      google.api.key=yourkey "inizia con AIza"
+      - Inserire al posto di yourkey "inizia con AIza" la propria key
 
-3) Avvia il progetto da terminale usando Maven Wrapper:
+3) Avviare il progetto da terminale usando Maven Wrapper:
       - Su Linux/macOS:
           ./mvnw spring-boot:run
       - Su Windows (PowerShell o cmd):
           mvnw.cmd spring-boot:run
 
-4) Apri il browser e vai all’indirizzo:
+4) Aprire il browser e andare all’indirizzo:
    http://localhost:8080
-   --> qui vedrai il sito in funzione.
+   --> qui si vedrà il sito in funzione.
 
 ---------------------------------------------
 
 ALTERNATIVA USANDO IDE (IntelliJ, Eclipse, VS Code)
 
-Al posto del punto 3, puoi:
+Invece di fare le operazioni descritte al punto 3, è necessario
 - Aprire il progetto nell’IDE
 - Navigare nella classe: com.nonsense.NonsenseApplication
 - Eseguire direttamente questa classe (run/debug)
 - Il sito sarà attivo su http://localhost:8080
-come sopra
+- come riportato al punto 4 sopra
