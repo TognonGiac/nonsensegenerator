@@ -29,7 +29,7 @@ Per utilizzare NONSENSE Generator si raccomanda di:
 
 4) Apri il browser e vai all’indirizzo:
    http://localhost:8080
-   Qui vedrai il sito in funzione.
+   --> qui vedrai il sito in funzione.
 
 ---------------------------------------------
 
@@ -39,4 +39,5 @@ Al posto del punto 3, puoi:
 - Aprire il progetto nell’IDE
 - Navigare nella classe: com.nonsense.NonsenseApplication
 - Eseguire direttamente questa classe (run/debug)
-- Il sito sarà attivo su http://localhost:8080 come sopra
+- Il sito sarà attivo su http://localhost:8080
+come sopra
