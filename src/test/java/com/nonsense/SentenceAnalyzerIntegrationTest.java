@@ -10,22 +10,19 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-public class SentenceAnalyzerTest {
+public class SentenceAnalyzerIntegrationTest {
 
     @Autowired
     private SentenceAnalyzer analyzer;
 
     @Test
-    public void testAnalyzeSyntax() throws Exception {
-        String sentence = "The dog eats the delicious food.";
-
+    public void testAnalyzeSyntax_realGoogleApi() throws Exception {
+        String sentence = "The dog runs fast.";
         Map<String, List<String>> result = analyzer.analyzeSyntax(sentence);
 
         assertNotNull(result);
         assertTrue(result.get("nouns").contains("dog"));
-        assertTrue(result.get("verbs").contains("eats"));
-        assertTrue(result.get("adjectives").contains("delicious"));
-
-        analyzer.close(); // opzionale, fa nulla ma compatibile con interfaccia
+        assertTrue(result.get("verbs").contains("runs"));
+        assertTrue(result.get("adjectives").contains("fast"));
     }
 }

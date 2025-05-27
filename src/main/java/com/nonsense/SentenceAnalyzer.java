@@ -2,6 +2,8 @@ package com.nonsense;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -13,23 +15,12 @@ import java.util.*;
 * Classe che analizza la sintassi di una frase in input con l'aiuto dell'API di Google atural Language.
 * Estrae sostantivi, verbi e aggettivi.
 */
+@Component
 public class SentenceAnalyzer {
 
     /** Chiave API per accedere a Google Cloud Natural Language API*/
-    private final String apiKey;
-
-    /** 
-    * Costruttore della classe SentenceAnalyzer
-    *
-    * @param apiKey : chiave API di Google, non può essere null o vuota.
-    * @throws IllegalArgumentException se la chiave è null o vuota
-    */
-    public SentenceAnalyzer(String apiKey) {
-        if (apiKey == null || apiKey.isBlank()) {
-            throw new IllegalArgumentException("Invalid API key");
-        }
-        this.apiKey = apiKey;
-    }
+    @Value("${google.api.key}")
+    private String apiKey;
 
     /**
     * Utilizzando Google Natural Language API, analizza la sintassi di una frase 

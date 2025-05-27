@@ -7,6 +7,8 @@ import java.net.URL;
 import java.util.Scanner;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 /**
 * Utility class per il controllo della tossicità del testo utilizzando l'API Google Cloud Natural Language.
@@ -14,13 +16,12 @@ import org.json.JSONObject;
 * Questa classe fornisce dei metodi per analizzare il contenuto testuale e determianre se contiene
 * linguaggio tossico utilizzando il servizio ModerateText di Google.
 */
+@Component
 public class ToxicityChecker {
-
-    /** Costruttore privato per evitare l'istanziazione della classe utility.*/
-    private ToxicityChecker(){
-        //previene l'istanzazione
-    }
     
+    @Value("${google.api.key}")
+    private String apiKey;
+
     /**
      * Verifica se la frase è considerata tossica utilizzando l'API Google Cloud Natural Language.
      *
@@ -36,7 +37,13 @@ public class ToxicityChecker {
      * @return true se la frase è considerata tossica con confidenza >= 0.5, false altrimenti
      * @throws Exception in caso di errori nella connessione o nella risposta dell'API
      */
-    public static boolean isToxic(String text, String apiKey) throws Exception {
+    public boolean isToxic(String text) throws Exception {
+
+        // Verifica che la chiave API sia impostata
+        if (apiKey == null || apiKey.isBlank()) {
+            throw new IllegalStateException("API key not set");
+        }
+        
         String endpoint = "https://language.googleapis.com/v1beta2/documents:moderateText?key=" + apiKey;
 
         // Escape per evitare problemi con doppi apici

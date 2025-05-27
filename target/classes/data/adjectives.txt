@@ -1,0 +1,5 @@
+happy
+big
+small
+fast
+red

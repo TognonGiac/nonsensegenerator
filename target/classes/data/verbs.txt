@@ -1,0 +1,5 @@
+jumps
+dances
+sings
+runs
+plays
