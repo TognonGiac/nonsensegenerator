@@ -1,7 +1,6 @@
 com\nonsense\util\ToxicityChecker.class
 com\nonsense\dto\SaveRequest.class
 com\nonsense\NonsenseApplication.class
-com\nonsense\service\NonsenseService.class
 com\nonsense\SentenceAnalyzer.class
 com\nonsense\NonsenseGenerator.class
 com\nonsense\controller\NonsenseController.class
