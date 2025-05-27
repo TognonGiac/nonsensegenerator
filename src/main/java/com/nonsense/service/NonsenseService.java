@@ -36,11 +36,20 @@ import org.springframework.stereotype.Service;
 @Service
 public class NonsenseService {
 
-    /** Costruttore pubblico di defalut.
-    * Viene usato da Spring per creare l'istanza del serivizo.
+    /** 
+    * La dipendenza da
+    * {@link SentenceAnalyzer} e {@link ToxicityChecker} viene iniettata tramite il costruttore
+    * esplicito sottostante. Spring utilizza il costruttore con parametri per creare l'istanza
+    * del servizio.
     */
-    public NonsenseService(){
+    private final SentenceAnalyzer analyzer;
+    private final ToxicityChecker checker;
+
+    public NonsenseService(SentenceAnalyzer analyzer, ToxicityChecker checker) {
+        this.analyzer = analyzer;
+        this.checker = checker;
     }
+
     
     /**
     * Vocabolario in memoria per i nomi, condiviso tra tutte le istanze.
@@ -96,9 +105,7 @@ public class NonsenseService {
             throw new IllegalStateException("API key not found: Make sure you have set google.api.key in application.properties");
         }
         
-        SentenceAnalyzer analyzer = new SentenceAnalyzer(apiKey);
         Map<String, List<String>> parts = analyzer.analyzeSyntax(sentence);
-        analyzer.close();
 
         List<String> nouns = parts.get("nouns");
         List<String> verbs = parts.get("verbs");
@@ -117,7 +124,7 @@ public class NonsenseService {
         List<String> filtered = new ArrayList<>();
         for (String sentenceOut : generated) {
             try {
-                if (ToxicityChecker.isToxic(sentenceOut, apiKey)) {
+                if (checker.isToxic(sentenceOut)) {
                     filtered.add("Sentence not shown due to its toxicity");
                 } else {
                     filtered.add(sentenceOut);

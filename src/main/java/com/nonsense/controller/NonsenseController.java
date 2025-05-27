@@ -82,7 +82,6 @@ public class NonsenseController {
         try {
             List<String> generated = service.generateNonsenseSentences(sentence, count);
 
-            // TODO: filtro tossicità
 
             response.put("sentences", generated);
         } catch (IOException e) {
