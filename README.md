@@ -18,7 +18,7 @@ Per utilizzare NONSENSE Generator si raccomanda di:
 
   2) Configura la tua API key Google. Apri il file:
      nonsensegenerator/src/main/resources/application.properties
-     Vedrai la riga:      google.api.key=yourkey "inizia con Aiza"
+   - Vedrai la riga:      google.api.key=yourkey "inizia con Aiza"
    - Inserisci al posto di yourkey "inizia con Aiza" la tua effettiva key
 
 3) Avvia il progetto da terminale usando Maven Wrapper:
