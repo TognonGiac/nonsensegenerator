@@ -147,6 +147,13 @@ public class NonsenseGenerator {
         if (userVerbs != null) allVerbs.addAll(userVerbs);
         if (userAdjectives != null) allAdjectives.addAll(userAdjectives);
 
+        //se la frase inserita è vuota non genera nulla
+        if ((userNouns == null || userNouns.isEmpty()) &&
+            (userVerbs == null || userVerbs.isEmpty()) &&
+            (userAdjectives == null || userAdjectives.isEmpty())) {
+            return List.of(); // non generare nulla
+        }
+        
         List<String> results = new ArrayList<>();
         for (int i = 0; i < count; i++) {
             String template = templates.get(rand.nextInt(templates.size()));
