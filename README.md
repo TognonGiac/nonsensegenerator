@@ -20,6 +20,6 @@ Per utilizzare NONSENSE Generator si raccomanda di:
   3- Andare al seguente percorso nonsensegenerator/src/main/resources/application.properties e modificare la voce yourkey con la propria API key in questo modo:
   google.api.key=youkey
   
-  4-Avviare l'applicazione Spring Boot (eseguendo NonsenseApplication.java)
+  4- Avviare l'applicazione Spring Boot (eseguendo NonsenseApplication.java)
   
   5- Anfine, per visualizzare il generatore, digitare su browser: localhost:8080
