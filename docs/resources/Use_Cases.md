@@ -318,20 +318,19 @@ actor User as U
 rectangle "NONSENSE Generator" {
 
   ' Input
-  usecase UC1 as "Enter Initial Sentence"
-  usecase UC2 as "Selection Number of Output Sentences"
+  usecase UC1 as "Inserire la frase iniziale"
+  usecase UC2 as "Selezione del numero di frasi in output"
 
   ' Elaborazione
-  usecase UC3 as "View Generated Sentences"
-  usecase UC4 as "Toxicity Check"
+  usecase UC3 as "Vedere le frasi generate"
+  usecase UC4 as "Controllo Tossicità"
 
   ' Azioni post-output
-  usecase UC5 as "Reset the Generator"
-  usecase UC6 as "Copy the Sentences"
-  usecase UC7 as "Save Output Sentences to Text File"
+  usecase UC5 as "Copy the Sentences"
+  usecase UC6 as "Save Output Sentences to Text File"
 
   ' Automatico
-  usecase UC8 as "Save Words to Software Dictionary"
+  usecase UC7 as "Save Words to Software Dictionary"
 }
 
 ' === Associazioni User ===
@@ -340,17 +339,15 @@ U --> UC2
 U --> UC3
 U --> UC5
 U --> UC6
-U --> UC7
 
 ' === Associazioni Software ===
 S --> UC4
-S --> UC8
+S --> UC7
 
 ' === Relazioni tra use cases ===
-UC1 -[dashed]-> UC8 : <<includes>>
+UC1 -[dashed]-> UC7 : <<includes>>
 UC3 -[dashed]-> UC4 : <<includes>>
-UC3 <-[dashed]- UC6 : <<extends>>
 UC3 <-[dashed]- UC5 : <<extends>>
-UC1 <-[dashed]- UC7 : <<extends>>
+UC1 <-[dashed]- UC6 : <<extends>>
 @enduml
 ```
