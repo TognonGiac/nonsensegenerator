@@ -177,21 +177,27 @@
                 <ol>
                     <li>Clonare il progetto da GitHub in una cartella a piacere: <code>git clone https://github.com/TognonGiac/nonsensegenerator.git</code> </li>
                     <li>Configurare la propria API key Google:</li>
-                    <ol> 
-                        <li>aprire il file: <code>nonsensegenerator/src/main/resources/application.properties</code></li>
-                        <li>si vedrá la riga: <code>google.api.key=yourkey</code> <i>"inizia con AIza"</i></li>
-                        <li>inserire invece di yourkey <i>"inizia con AIza"</i> la propria key</li>
-                    </ol>
+                        <ol> 
+                            <li>aprire il file: <code>nonsensegenerator/src/main/resources/application.properties</code></li>
+                            <li>si vedrá la riga: <code>google.api.key=yourkey</code> <i>"inizia con AIza"</i></li>
+                            <li>inserire invece di yourkey <i>"inizia con AIza"</i> la propria key</li>
+                        </ol>
                     <li>Avviare il progetto da terminale usando <b>Maven Wrapper</b>:</li>
-                    <ul>
-                        <li>Su <b>Linux/macOS</b>: <code>./mvnw spring-boot:run</code></li>
-                        <li>Su <b>Windows</b> <i>(PowerShell o cmd)</i>: <code>mvnw.cmd spring-boot:run</code></li>
-                    </ul>
+                        <ul>
+                            <li>Su <b>Linux/macOS</b>: <code>./mvnw spring-boot:run</code></li>
+                            <li>Su <b>Windows</b> <i>(PowerShell o cmd)</i>: <code>mvnw.cmd spring-boot:run</code></li>
+                        </ul>
+                    <li>Aprire il browser e andare all’indirizzo: <code><a href="http://localhost:8080">http://localhost:8080</a></code> --> qui si vedrà il sito in funzione.</li>
                 </ol>
             <hr>
-            <p>
-                aaaaaaa
-            </p>
+               <h4>ALTERNATIVA USANDO IDE <i>(IntelliJ, Eclipse, VS Code)</i></h4>
+               Invece di fare le operazioni descritte al punto 3, è necessario:
+                <ul>
+                    <li>Aprire il progetto nell'IDE</li>
+                    <li>Navigare nella classe: <code>com.nonsense.NonsenseApplication</code></li>
+                    <li>Eseguire direttamente questa classe <i>(run/debug)</i></li>
+                    <li>Il sito sarà attivo all'indirizzo: <code><a href="http://localhost:8080">http://localhost:8080</a></code>, come nel punto 4 sopra.</li>
+                </ul>
             </p>
             <div class="span-h2"></div>
 
