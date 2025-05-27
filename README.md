@@ -7,7 +7,7 @@ Per visualizzare la documentazione --> https://tognongiac.github.io/nonsensegene
 ---
 
 
-## DOWNLOAD NONSENSE GENERATOR
+## DOWNLOAD
 
 Per utilizzare NONSENSE Generator si raccomanda di:
 
