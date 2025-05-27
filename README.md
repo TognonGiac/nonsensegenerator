@@ -40,4 +40,4 @@ Invece di fare le operazioni descritte al punto 3, è necessario
 - Navigare nella classe: com.nonsense.NonsenseApplication
 - Eseguire direttamente questa classe (run/debug)
 - Il sito sarà attivo su http://localhost:8080
-- come riportato al punto 4 sopra
+  come riportato al punto 4 sopra
