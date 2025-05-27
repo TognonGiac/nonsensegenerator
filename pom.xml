@@ -8,76 +8,85 @@
     <artifactId>nonsensegenerator</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <properties>
+    <!-- Specifica della versione di java usata -->
+    <properties> 
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
     </properties>
 
    <dependencies>
-    <!-- Spring Boot -->
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-web</artifactId>
-        <version>3.2.4</version>
-    </dependency>
+        <!-- Spring Boot, per creare l'applicazione web -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>3.2.4</version>
+        </dependency>
 
-    <!-- Google Cloud NLP -->
-    <dependency>
-          <groupId>com.google.cloud</groupId>
-           <artifactId>google-cloud-language</artifactId>
-           <version>2.64.0</version> <!-- Versione che include moderateText -->
-    </dependency>
-            
-    <!-- dotenv -->
-    <dependency>
-        <groupId>io.github.cdimascio</groupId>
-        <artifactId>dotenv-java</artifactId>
-        <version>3.0.0</version>
-    </dependency>
+        <!-- Google Cloud NLP -->
+        <dependency>
+            <groupId>com.google.cloud</groupId>
+            <artifactId>google-cloud-language</artifactId>
+            <version>2.64.0</version> <!-- Versione che include moderateText -->
+        </dependency>
+                
+        <!-- dotenv, libreria java che permette di caricare variabili d'ambiente da un file .env-->
+        <dependency>
+            <groupId>io.github.cdimascio</groupId>
+            <artifactId>dotenv-java</artifactId>
+            <version>3.0.0</version>
+        </dependency>
 
-    <dependency>
-             <groupId>org.springframework.boot</groupId>
-             <artifactId>spring-boot-starter-test</artifactId>
-             <version>3.2.4</version>
-             <scope>test</scope>
-             </dependency>   
-    
-    <!-- JSON Processing -->
-          <dependency>
-             <groupId>org.json</groupId>
-             <artifactId>json</artifactId>
-             <version>20240303</version>
-         </dependency>
-</dependencies>
+        <!-- Dipendenza "starter" di spring boot per i test -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>3.2.4</version>
+            <scope>test</scope>
+        </dependency>   
 
-         <build>
-                  <plugins>
-                           <!-- Plugin Spring Boot -->
-                           <plugin>
-                                    <groupId>org.springframework.boot</groupId>
-                                    <artifactId>spring-boot-maven-plugin</artifactId>
-                                    <version>3.2.5</version>
-                           </plugin>
+        <!-- libreria java per lavorare con JSON -->
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20240303</version>
+        </dependency>
+    </dependencies>
 
-                           <!-- Plugin javadoc -->
-                           <plugin>
-                                    <groupId>org.apache.maven.plugins</groupId>
-                                    <artifactId>maven-javadoc-plugin</artifactId>
-                                    <version>3.6.3</version>
-                                    <configuration>
-                                            <reportOutputDirectory>${project.basedir}/docs</reportOutputDirectory>
-                                            <doctitle>Nonsense Generator API</doctitle>
-                                            <windowtitle>Nonsense Generator</windowtitle>
-                                    </configuration>
-                                    <executions>
-                                            <execution>
-                                              <id>attach-javadocs</id>
-                                              <goals>
-                                                      <goal>javadoc</goal>
-                                              </goals>
-                                            </execution>
-                                    </executions>
-                           </plugin>
-                  </plugins>
-      </build>
+    <build>
+        <plugins>
+            <!-- Plugin Spring Boot -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>3.2.5</version>
+            </plugin>
+
+            <!-- Plugin javadoc -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.6.3</version>
+                <configuration>
+                    <reportOutputDirectory>${project.basedir}/docs</reportOutputDirectory>
+                    <doctitle>Nonsense Generator API</doctitle>
+                    <windowtitle>Nonsense Generator</windowtitle>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>javadoc</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Plugin per creare HTML dei test-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+                <version>3.2.5</version>
+            </plugin>
+        </plugins>
+    </build>
 </project>
