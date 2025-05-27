@@ -8,293 +8,278 @@
 7. Salvataggio frase nel file di testo
 8. Salvataggio parole nel dizionario del software
 
-### Use Case 1
-<table>
-  <tr>
-    <td><b>Nome Use Case</b>
-    <td>Inserimento frase iniziale</td>
-  </tr>
-  <tr>
-    <td><b>Attori</b></td>
-    <td>Utente</td>
-  </tr>
-  <tr>
-    <td><b>Descrizione</b></td>
-    <td>Viene inserita la frase da parte dell’utente che poi il sistema dividerà sintatticamente.</td>
-  </tr>
-  <tr>
-    <td><b>Precondizioni</b></td>
-    <td>-</td>
-  </tr>
-  <tr>
-    <td><b>Scenario principale</b></td>
-    <td>L’utente digita la frase in una casella di testo.</td>
-  </tr>
-  <tr>
-    <td><b>Scenario alternativo</b></td>
-    <td>Il sistema genera un messaggio di errore quando la casella di testo per la frase input non viene compilata.</td>
-  </tr>
-  <tr>
-    <td><b>Post-condizioni</b></td>
-    <td>La frase viene memorizzata ed analizzata per un’ulteriore elaborazione.</td>
-  </tr>
-    <tr>
-    <td><b>Note</b></td>
-    <td>-</td>
-  </tr>
-</table>
+<!--TABELLA UC1-->
+            <table>
+                <tr>
+                    <th><b id="UC1">Use Case 1</b></th>
+                </tr>
+                <tr>
+                    <td><b>Nome Use Case</b></td>
+                    <td>Inserire la frase iniziale</td>
+                </tr>
+                <tr>
+                    <td><b>Attori</b></td>
+                    <td>Utente</td>
+                </tr>
+                <tr>
+                    <td><b>Descrizione</b></td>
+                    <td>Immissione di una frase che verrà analizzata sintatticamente dal sistema.</td>
+                </tr>
+                <tr>
+                    <td><b>Precondizioni</b></td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td><b>Scenario principale</b></td>
+                    <td>L'utente inserisce una frase nella casella di testo.</td>
+                </tr>
+                <tr>
+                    <td><b>Scenario alternativo</b></td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td><b>Post condizioni</b></td>
+                    <td>La frase viene analizzata.</td>
+                </tr>
+                <tr>
+                    <td><b>Note</b></td>
+                    <td>-</td>
+                </tr>
+            </table>
 
-### Use Case 2
-<table>
-  <tr>
-    <td><b>Nome Use Case</b>
-    <td>Scelta del numero di frasi in output</td>
-  </tr>
-  <tr>
-    <td><b>Attori</b></td>
-    <td>Utente</td>
-  </tr>
-  <tr>
-    <td><b>Descrizione</b></td>
-    <td>L'utente seleziona la quantità desiderata di frasi nonsense in output.</td>
-  </tr>
-  <tr>
-    <td><b>Precondizioni</b></td>
-    <td>-</td>
-  </tr>
-  <tr>
-    <td><b>Scenario principale</b></td>
-    <td>L’utente sceglie il numero di frasi senza senso</td>
-  </tr>
-  <tr>
-    <td><b>Scenario alternativo</b></td>
-    <td>L’utente non inserisce nulla e non viene generato nulla.</td>
-  </tr>
-  <tr>
-    <td><b>Post-condizioni</b></td>
-    <td>Il sistema è pronto a generare il numero specificato di frasi.</td>
-  </tr>
-    <tr>
-    <td><b>Note</b></td>
-    <td>-</td>
-  </tr>
-</table>
+              <!--TABELLA UC2-->
+            <table>
+                <tr>
+                    <th><b id="UC2">Use Case 2</b></th>
+                </tr>
+                <tr>
+                    <td><b>Nome Use Case</b>
+                    <td>Selezione del numero di frasi in output</td>
+                </tr>
+                <tr>
+                    <td><b>Attori</b></td>
+                    <td>Utente</td>
+                </tr>
+                <tr>
+                    <td><b>Descrizione</b></td>
+                    <td>L'utente seleziona la quantità desiderata di frasi nonsense da produrre.</td>
+                </tr>
+                <tr>
+                    <td><b>Precondizioni</b></td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td><b>Scenario principale</b></td>
+                    <td>L'utente seleziona il numero di frasi senza senso.</td>
+                </tr>
+                <tr>
+                    <td><b>Scenario alternativo</b></td>
+                    <td>Non viene inserita alcuna frase, quindi non viene generato nulla.</td>
+                </tr>
+                <tr>
+                    <td><b>Post condizioni</b></td>
+                    <td>Il software genera il numero di frasi nonsense richiesto.</td>
+                </tr>
+                <tr>
+                    <td><b>Note</b></td>
+                    <td>-</td>
+                </tr>
+            </table>
 
-### Use Case 3
-<table>
-  <tr>
-    <td><b>Nome Use Case</b>
-    <td>Vedere i risultati delle frasi generate</td>
-  </tr>
-  <tr>
-    <td><b>Attori</b></td>
-    <td>Utente</td>
-  </tr>
-  <tr>
-    <td><b>Descrizione</b></td>
-    <td>L'utente visualizza il numero di frasi nonsense generate in output.</td>
-  </tr>
-  <tr>
-    <td><b>Precondizioni</b></td>
-    <td>L'utente deve aver scritto una frase in input e aver selezionato il numero di frasi nonsense che desidera in output.</td>
-  </tr>
-  <tr>
-    <td><b>Scenario principale</b></td>
-    <td>Dopo aver cliccato il pulsante “genera”, l’utente visualizza le frasi in output.</td>
-  </tr>
-  <tr>
-    <td><b>Scenario alternativo</b></td>
-    <td>Se l’utente non ha inserito sia la frase in input che il numero di frasi in output, allora non ci sarà alcuna frase in output.</td>
-  </tr>
-  <tr>
-    <td><b>Post-condizioni</b></td>
-    <td>-</td>
-  </tr>
-    <tr>
-    <td><b>Note</b></td>
-    <td>-</td>
-  </tr>
-</table>
+             <!--TABELLA UC3-->
+            <table>
+                <tr>
+                    <th><b id="UC3">Use Case 3</b></th>
+                </tr>
+                <tr>
+                    <td><b>Nome Use Case</b>
+                    <td>Vedere le frasi generate</td>
+                </tr>
+                <tr>
+                    <td><b>Attori</b></td>
+                    <td>Utente</td>
+                </tr>
+                <tr>
+                    <td><b>Descrizione</b></td>
+                    <td>L'utente visualizza il numero di frasi senza senso generate come output.</td>
+                </tr>
+                <tr>
+                    <td><b>Precondizioni</b></td>
+                    <td>L'utente deve aver inserito una frase di input e selezionato il numero di frasi senza senso da generare.</td>
+                </tr>
+                <tr>
+                    <td><b>Scenario principale</b></td>
+                    <td>Dopo aver fatto clic sul pulsante "Genera", l'utente vede le frasi senza senso generate visualizzate come output.</td>
+                </tr>
+                <tr>
+                    <td><b>Scenario alternativo</b></td>
+                    <td>L'utente non ha inserito né la frase di input né il numero di frasi di output desiderate, perciò nessuna frase verrà generata e visualizzata.</td>
+                </tr>
+                <tr>
+                    <td><b>Post condizioni</b></td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td><b>Note</b></td>
+                    <td>-</td>
+                </tr>
+            </table>
 
-### Use Case 4
-<table>
-  <tr>
-    <td><b>Nome Use Case</b>
-    <td>Controllo tossicità</td>
-  </tr>
-  <tr>
-    <td><b>Attori</b></td>
-    <td>Software</td>
-  </tr>
-  <tr>
-    <td><b>Descrizione</b></td>
-    <td>Il sistema controlla che ciascuna delle frasi generate non includa contenuti inappropriati.</td>
-  </tr>
-  <tr>
-    <td><b>Precondizioni</b></td>
-    <td>Sono state generate tutte le frasi richieste in output.</td>
-  </tr>
-  <tr>
-    <td><b>Scenario principale</b></td>
-    <td>La frase è adatta e viene mostrata come output.</td>
-  </tr>
-  <tr>
-    <td><b>Scenario alternativo</b></td>
-    <td>Se la frase non è adatta, al suo posto viene mostrato un messaggio di errore.</td>
-  </tr>
-  <tr>
-    <td><b>Post-condizioni</b></td>
-    <td>-</td>
-  </tr>
-    <tr>
-    <td><b>Note</b></td>
-    <td>Viene utilizzato l’API Google per analizzare ciascuna frase.</td>
-  </tr>
-</table>
+             <!--TABELLA UC4-->
+            <table>
+                <tr>
+                    <th><b id="UC4">Use Case 4</b></th>
+                </tr>
+                <tr>
+                    <td><b>Nome Use Case</b>
+                    <td>Conttrollo tossicità</td>
+                </tr>
+                <tr>
+                    <td><b>Attori</b></td>
+                    <td>Software</td>
+                </tr>
+                <tr>
+                    <td><b>Descrizione</b></td>
+                    <td>Il sistema controlla che ciascuna delle frasi generate non includa contenuti appropriati.</td>
+                </tr>
+                <tr>
+                    <td><b>Precondizioni</b></td>
+                    <td>Tutte le frasi richieste in output sono state generate.</td>
+                </tr>
+                <tr>
+                    <td><b>Scenario principale</b></td>
+                    <td>La frase è sicura, quindi viene mostrata nell'output.</td>
+                </tr>
+                <tr>
+                    <td><b>Scenario alternativo</b></td>
+                    <td>La frase è tossica, quindi viene visualizzato un messaggio di avviso invece della frase.</td>
+                </tr>
+                <tr>
+                    <td><b>Post condizioni</b></td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td><b>Note</b></td>
+                    <td>Viene utilizzato l' API di Google per controllare ciascuna frase in output.</td>
+                </tr>
+            </table>
 
-### Use Case 5
-<table>
-  <tr>
-    <td><b>Nome Use Case</b>
-    <td>Reset del generatore</td>
-  </tr>
-  <tr>
-    <td><b>Attori</b></td>
-    <td>Utente</td>
-  </tr>
-  <tr>
-    <td><b>Descrizione</b></td>
-    <td>Quando l’utente clicca il pulsante “reset” vengono eliminate tutte le frasi generate fino a quel momento.</td>
-  </tr>
-  <tr>
-    <td><b>Precondizioni</b></td>
-    <td>E' stato cliccato il pulsante “reset”.</td>
-  </tr>
-  <tr>
-    <td><b>Scenario principale</b></td>
-    <td>Vengono eliminate tutte le frasi generate fino a quel momento.</td>
-  </tr>
-  <tr>
-    <td><b>Scenario alternativo</b></td>
-    <td>Se l’utente non ha inserito nulla, il reset non ha alcun effetto.</td>
-  </tr>
-  <tr>
-    <td><b>Post-condizioni</b></td>
-    <td>-</td>
-  </tr>
-    <tr>
-    <td><b>Note</b></td>
-    <td>-</td>
-  </tr>
-</table>
+            <!--TABELLA UC5-->
+            <table>
+                <tr>
+                    <th><b id="UC5">Use Case 5</b></th>
+                </tr>
+                <tr>
+                    <td><b>Nome Use Case</b>
+                    <td>Copia frasi</td>
+                </tr>
+                <tr>
+                    <td><b>Actors</b></td>
+                    <td>Utente</td>
+                </tr>
+                <tr>
+                    <td><b>Descrizione</b></td>
+                    <td>Quando l'utente fa clic sul pulsante "Copia", tutte le frasi nonsense generate in precedenza vengono rimosse.</td>
+                </tr>
+                <tr>
+                    <td><b>Precondizioni</b></td>
+                    <td>L'utente ha selezionato quali frasi desidera copiare.</td>
+                </tr>
+                <tr>
+                    <td><b>Scenario principale</b></td>
+                    <td>L'utente può copiare una frase specifica o tutte le frasi generate.</td>
+                </tr>
+                <tr>
+                    <td><b>Scenario alternativo</b></td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td><b>Post condizioni</b></td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td><b>Note</b></td>
+                    <td>-</td>
+                </tr>
+            </table>
 
-### Use Case 6
-<table>
-  <tr>
-    <td><b>Nome Use Case</b>
-    <td>Copia frasi</td>
-  </tr>
-  <tr>
-    <td><b>Attori</b></td>
-    <td>Utente</td>
-  </tr>
-  <tr>
-    <td><b>Descrizione</b></td>
-    <td>Quando l’utente clicca  il tasto “copia” il software fa in modo che venga permessa la copia delle frasi scelte.</td>
-  </tr>
-  <tr>
-    <td><b>Precondizioni</b></td>
-    <td>-</td>
-  </tr>
-  <tr>
-    <td><b>Scenario principale</b></td>
-    <td>E' permessa la copia della frase specifica o di tutte le frasi.</td>
-  </tr>
-  <tr>
-    <td><b>Scenario alternativo</b></td>
-    <td>Non è permessa alcuna copia.</td>
-  </tr>
-  <tr>
-    <td><b>Post-condizioni</b></td>
-    <td>-</td>
-  </tr>
-    <tr>
-    <td><b>Note</b></td>
-    <td>-</td>
-  </tr>
-</table>
+            <!--TABELLA UC6-->
+            <table>
+                <tr>
+                    <th><b id="UC6">Use Case 6</b></th>
+                </tr>
+                <tr>
+                    <td><b>Nome Use Case</b>
+                    <td>Salva frasi nonsense nel file di testo</td>
+                </tr>
+                <tr>
+                    <td><b>Attori</b></td>
+                    <td>Utente</td>
+                </tr>
+                <tr>
+                    <td><b>Descrizione</b></td>
+                    <td>Le parole della frase inserita dall'utente vengono salvate nel dizionario interno del software.</td>
+                </tr>
+                <tr>
+                    <td><b>Precondizioni</b></td>
+                    <td>L'utente ha inserito una frase di input, ha selezionato il numero di frasi di output e ha fatto clic sul pulsante "Genera".</td>
+                </tr>
+                <tr>
+                    <td><b>Scenario principale</b></td>
+                    <td>L'utente ha inserito la frase.<br>Le parole estratte vengono salvate nel dizionario del software per un utilizzo futuro nella generazione di frasi senza senso.</td>
+                </tr>
+                <tr>
+                    <td><b>Scenario alternativo</b></td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td><b>Post condizioni</b></td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td><b>Note</b></td>
+                    <td>Le frasi nonsense sono salvate in un file .txt</td>
+                </tr>
+            </table>
 
-### Use Case 7
-<table>
-  <tr>
-    <td><b>Nome Use Case</b>
-    <td>Salvataggio frase nel file di testo</td>
-  </tr>
-  <tr>
-    <td><b>Attori</b></td>
-    <td>Utente</td>
-  </tr>
-  <tr>
-    <td><b>Descrizione</b></td>
-    <td>Salvataggio delle parole presenti nella frase input all’interno di un dizionario del software.</td>
-  </tr>
-  <tr>
-    <td><b>Precondizioni</b></td>
-    <td>Aver inserito frase di input, numero di frasi di output volute e aver premuto il tasto “genera”.</td>
-  </tr>
-  <tr>
-    <td><b>Scenario principale</b></td>
-    <td>L’utente digita la frase che viene analizzata, le parole vengono salvate nel dizionario del software per poterle utilizzare quando verranno generate frasi nonsense</td>
-  </tr>
-  <tr>
-    <td><b>Scenario alternativo</b></td>
-    <td>Il sistema genera un messaggio quando la casella di testo per la frase input non viene compilata.</td>
-  </tr>
-  <tr>
-    <td><b>Post-condizioni</b></td>
-    <td>-</td>
-  </tr>
-    <tr>
-    <td><b>Note</b></td>
-    <td>File in formato di testo .txt</td>
-  </tr>
-</table>
-
-### Use Case 8
-<table>
-  <tr>
-    <td><b>Nome Use Case</b>
-    <td>Reset del generatore</td>
-  </tr>
-  <tr>
-    <td><b>Attori</b></td>
-    <td>Software</td>
-  </tr>
-  <tr>
-    <td><b>Descrizione</b></td>
-    <td>Salvataggio automatico delle parole presenti nella frase input all’interno di un dizionario del software.</td>
-  </tr>
-  <tr>
-    <td><b>Precondizioni</b></td>
-    <td>Il sistema verifica la qualità dell'input: non sono ammesse stringhe vuote o voci contenenti solo spazi.</td>
-  </tr>
-  <tr>
-    <td><b>Scenario principale</b></td>
-    <td>L’utente digita la frase che viene analizzata e le parole vengono salvate nel dizionario del software per poterle utilizzare quando genero frasi nonsense.</td>
-  </tr>
-  <tr>
-    <td><b>Scenario alternativo</b></td>
-    <td>Il sistema genera un messaggio quando la casella di testo per la frase input non viene compilata.</td>
-  </tr>
-  <tr>
-    <td><b>Post-condizioni</b></td>
-    <td>Persistenza dei dati, che devono rimanere anche dopo la chiusura del programma.</td>
-  </tr>
-    <tr>
-    <td><b>Note</b></td>
-    <td>Deve esserci un utilizzo attivo di queste parole, almeno 1 per ogni frase generata.</td>
-  </tr>
-</table>
+            <!--TABELLA UC7-->
+            <table>
+                <tr>
+                    <th><b id="UC7">Use Case 7</b></th>
+                </tr>
+                <tr>
+                    <td><b>Nome Use Case</b>
+                    <td>Salva parole nel dizionario</td>
+                </tr>
+                <tr>
+                    <td><b>Attori</b></td>
+                    <td>Software</td>
+                </tr>
+                <tr>
+                    <td><b>Descrizione</b></td>
+                    <td>Salvataggio automatico delle parole dalla frase inserita dall'utente nel dizionario interno del software.</td>
+                </tr>
+                <tr>
+                    <td><b>Precondizioni</b></td>
+                    <td>L'utente ha inserito una frase.</td>
+                </tr>
+                <tr>
+                    <td><b>Scenario principale</b></td>
+                    <td>Le parole estratte vengono salvate nel dizionario interno in modo da poter essere riutilizzate nella generazione di frasi senza senso.</td>
+                </tr>
+                <tr>
+                    <td><b>Scenario alternativo</b></td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td><b>Post condizioni</b></td>
+                    <td>Persistenza dei dati: le parole salvate devono rimanere disponibili anche dopo la chiusura del programma.</td>
+                </tr>
+                <tr>
+                    <td><b>Note</b></td>
+                    <td>Le parole salvate vengono utilizzate attivamente nelle generazioni future.</td>
+                </tr>
+            </table>
 
 # Grafo Use Cases
 
