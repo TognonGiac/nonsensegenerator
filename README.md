@@ -36,7 +36,7 @@ Per utilizzare NONSENSE Generator si raccomanda di:
 ALTERNATIVA USANDO IDE (IntelliJ, Eclipse, VS Code)
 
 Al posto del punto 3, puoi:
-      - Aprire il progetto nell’IDE
-      - Navigare nella classe: com.nonsense.NonsenseApplication
-      - Eseguire direttamente questa classe (run/debug)
-      - Il sito sarà attivo su http://localhost:8080 come sopra
+- Aprire il progetto nell’IDE
+- Navigare nella classe: com.nonsense.NonsenseApplication
+- Eseguire direttamente questa classe (run/debug)
+- Il sito sarà attivo su http://localhost:8080 come sopra
