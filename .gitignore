@@ -1,8 +1,17 @@
-# Ignora file sensibili
-google-key.json
-.env
+# File generati da Maven
+/target/
 
-# Ignora cartelle target di Maven
-target/
-!**/src/main/**/target/
-!**/src/test/**/target/
+# File di log
+*.log
+
+# File di configurazione locali
+*.env
+.env
+google-key.json
+
+# Comando per caricare i risultati dei test su GitHub
+/surefire-reports/
+
+# File di sistema, macOS e Windows
+.DS_Store
+Thumbs.db
