@@ -178,23 +178,43 @@
 
             <!-- DESIGN PATTERNS -->
             <h2>Design Patterns</h2>
+            <h3>GRASP</h3>
             
-
+            <h4>Creator</h4>
+            <p>La classe <code>NonsenseService</code> è responsabile della creazione delle frasi e coordina l'interazione tra le componenti coinvolte (analizzatore, generatore, filtro). Secondo il principio Creator, questa classe ha la responsabilità di creare oggetti basandosi sui dati ricevuti dall'utente.</p>
+            
             <h4>Controller</h4>
-           
-
+            <p>La classe <code>NonsenseController</code> funge da Controller, gestendo la comunicazione tra l'interfaccia esterna e la logica applicativa. Riceve input, invoca i metodi del servizio, e restituisce il risultato all'utente.</p>
+            
             <h4>Low Coupling</h4>
-           
-
+            <p>Il progetto è stato strutturato per minimizzare l'accoppiamento tra le classi. Ogni componente opera su un livello di astrazione ben definito, questo approccio riduce l’impatto delle modifiche e semplifica il testing.</p>
+            
+            <h4>High Cohesion</h4>
+            <p>Ogni classe è progettata con una singola responsabilità ben definita: <code>SentenceAnalyzer</code> si occupa dell'analisi grammaticale, <code>ToxicityChecker</code> della moderazione del contenuto, e <code>NonsenseService</code> coordina ma non implementa la logica di base.</p>
+            
             <h4>Pure Fabrication</h4>
-
+            <p>La classe <code>ToxicityChecker</code> è un esempio di Pure Fabrication: è stata progettata  per incapsulare tutta la logica di interfacciamento con l'API esterna, separandola dal dominio principale dell’applicazione (generazione linguistica). Ciò migliora la coesione e testabilità.</p>
+            
+            <h3>GoF</h3>
+            <h4>Builder</h4>
+            <p>Il pattern Builder è applicato concettualmente nella composizione delle frasi all’interno di <code>NonsenseGenerator</ocde>, dove gli elementi (soggetto, verbo, complemento) vengono selezionati ed assemblati in modo incrementale e configurabile.</p>
+            
+            <h4>Factory</h4>
+            <p>La costruzione degli oggetti frase avviene in modo centralizzato all’interno del servizio. In forma implicita, la logica è coerente con il pattern.</p>
+            
+            <h4>Adapter</h4>
+            <p>La classe <code>ToxicityChecker</code> rappresenta un Adapter rispetto alle API Google Cloud Natural Language. Fornisce un'interfaccia interna: <code>isToxic(String text)</code> che nasconde i dettagli di implementazione dell'API esterna e le sue complessità, semplificando l'uso da parte del sistema.<p>
+            
+            <h4>Facade/h4>
+            <p>La classe <code>NonsenseService</code> può essere vista anche come Facade, poiché fornisce un’interfaccia semplificata e unificata al sistema di generazione: coordina l’analisi, la costruzione della frase, e la verifica di tossicità, nascondendo i dettagli dei moduli sottostanti al Controller.
+            <div class="span-h2"></div>
 
         </section>
 
         <hr/>  <!-- ---------------------------------------------------------------------- -->
 
         <section class="js-section" id="specifications">
-            <h1 class="section__title" style="font-size: 33px;">Specifications</h1>
+            <h1 class="section__title" style="font-size: 33px;">Specifiche</h1>
 
             <!--IMAGES USE CASES-->
             <img class="myImg" src="resources/img/diagrams/UseCasesDiagram.png" alt="Use Cases" title="Use Cases"
