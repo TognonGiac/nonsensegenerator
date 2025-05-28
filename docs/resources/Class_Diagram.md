@@ -59,13 +59,13 @@ class Output {
 
 User --> InputSentence : insert
 User --> SentenceGenerator 
-InputSentence --> SentenceAnalyzer : passed to
+InputSentence --> SentenceAnalyzer : is analyzed by
 SentenceAnalyzer --> Word
 SentenceAnalyzer --> Dictionary : uses
 Dictionary --> Word : contains
 SentenceGenerator --> Dictionary : uses
 SentenceGenerator --> NonsenseSentence : generate
-SentenceGenerator --> SentenceModerator :uses 
+SentenceGenerator --> SentenceModerator : uses 
 SentenceModerator --> NonsenseSentence : validates
 User --> Output 
 Output --> NonsenseSentence : displays
