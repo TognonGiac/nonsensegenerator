@@ -3,10 +3,9 @@
 2. Scelta del numero di frasi in output
 3. Vedere risultati delle frasi generate
 4. Controllo tossicità
-5. Reset del generatore
-6. Copia frasi
-7. Salvataggio frase nel file di testo
-8. Salvataggio parole nel dizionario del software
+5. Copia frasi
+6. Salvataggio frase nel file di testo
+7. Salvataggio parole nel dizionario del software
 
 <!--TABELLA UC1-->
             <table>
@@ -132,7 +131,7 @@
                 </tr>
                 <tr>
                     <td><b>Nome Use Case</b>
-                    <td>Conttrollo tossicità</td>
+                    <td>Controllo tossicità</td>
                 </tr>
                 <tr>
                     <td><b>Attori</b></td>
