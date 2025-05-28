@@ -67,19 +67,18 @@ end
 
 ```plantuml
 @startuml
-title Internal SD – Generazione Frasi Nonsense
+title Internal Sequence Diagram – Nonsense Sentence Generation
 
-participant GeneratoreFrasi
-participant Dizionario
-participant Parola
-participant FraseNonSense
+participant SentenceGenerator
+participant Dictionary
+participant Word
+participant NonsenseSentence
 
-GeneratoreFrasi -> Dizionario : getParole()
-loop n volte
-  Dizionario -> Parola : getRandom(tipo)
-  Parola -> FraseNonSense : componi()
+loop n times
+  SentenceGenerator -> Dictionary : getRandom(type)
+  SentenceGenerator -> NonsenseSentence : addWord(word)
 end
-GeneratoreFrasi -> FraseNonSense : ritornaFrasi()
+SentenceGenerator -> NonsenseSentence : finalize()
 @enduml
 ```
 
