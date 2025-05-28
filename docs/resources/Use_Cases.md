@@ -295,44 +295,44 @@ skinparam usecase {
   ArrowColor black
 }
 
-' Attori
-actor Software as S
+' Actors
+actor System as S
 actor User as U
 
-' Sistema
+' System
 rectangle "NONSENSE Generator" {
 
   ' Input
-  usecase UC1 as "Inserire la frase iniziale"
-  usecase UC2 as "Selezione del numero di frasi in output"
+  usecase UC1 as "Insert the initial sentence"
+  usecase UC2 as "Select number of output sentences"
 
-  ' Elaborazione
-  usecase UC3 as "Vedere le frasi generate"
-  usecase UC4 as "Controllo Tossicità"
+  ' Processing
+  usecase UC3 as "View generated sentences"
+  usecase UC4 as "Toxicity check"
 
-  ' Azioni post-output
-  usecase UC5 as "Copy the Sentences"
-  usecase UC6 as "Save Output Sentences to Text File"
+  ' Post-output actions
+  usecase UC5 as "Copy sentences"
+  usecase UC6 as "Save output sentences to text file"
 
-  ' Automatico
-  usecase UC7 as "Save Words to Software Dictionary"
+  ' Automatic
+  usecase UC7 as "Save words to software dictionary"
 }
 
-' === Associazioni User ===
+' === User associations ===
 U --> UC1
 U --> UC2
 U --> UC3
 U --> UC5
 U --> UC6
 
-' === Associazioni Software ===
+' === System associations ===
 S --> UC4
 S --> UC7
 
-' === Relazioni tra use cases ===
+' === Use case relationships ===
 UC1 -[dashed]-> UC7 : <<includes>>
 UC3 -[dashed]-> UC4 : <<includes>>
 UC3 <-[dashed]- UC5 : <<extends>>
-UC1 <-[dashed]- UC6 : <<extends>>
+UC3 <-[dashed]- UC6 : <<extends>>
 @enduml
 ```
