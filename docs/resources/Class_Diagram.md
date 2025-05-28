@@ -4,68 +4,70 @@
 
 ```plantuml
 @startuml
-class Utente {
-  + inserisciFrase(testo: String): void
-  + richiediGenerazione(numero: int): void
+class User {
+  + insertSentence(text: String): void
+  + requestGeneration(count: int): void
 }
 
-class FraseInInput {
-  - testo: String
-  + getTesto(): String
+class InputSentence {
+  - text: String
+  + getText(): String
 }
 
-class Parola {
-  - testo: String
-  - tipo: TipoParola
-  + getTesto(): String
-  + getTipo(): TipoParola
+class Word {
+  - text: String
+  - type: WordType
+  + getText(): String
+  + getType(): WordType
 }
 
-enum TipoParola {
-  VERBO
-  NOME
-  AVVERBIO
-  AGGETTIVO
+enum WordType {
+  VERB
+  NAME
+  ADVERB
+  ADJECTIVE
 }
 
-class Dizionario {
-  - parole: List<Parola>
-  + contiene(parola: Parola): boolean
-  + aggiungi(parola: Parola): void
-  + getParolePerTipo(tipo: TipoParola): List<Parola>
+class Dictionary {
+  - words: List<Word>
+  + contains(word: Word): boolean
+  + add(word: Word): void
+  + getWordsByType(type: WordType): List<Word>
 }
 
-class AnalizzatoreFrasi {
-  + analizza(frase: FraseInInput): List<Parola>
+class SentenceAnalyzer {
+  + analyze(sentence: InputSentence): List<Word>
 }
 
-class GeneratoreFrasi {
-  - numeroFrasiOutput: int
-  + genera(parole: List<Parola>, diz: Dizionario): List<FraseNonSense>
+class SentenceGenerator {
+  - outputSentenceCount: int
+  + generate(words: List<Word>, dict: Dictionary): List<NonsenseSentence>
 }
 
-class FraseNonSense {
-  - parole: List<Parola>
+class NonsenseSentence {
+  - words: List<Word>
   + toString(): String
 }
 
-class ModeratoreFrasi {
-  + valida(frase: FraseNonSense): boolean
+class SentenceModerator {
+  + validate(sentence: NonsenseSentence): boolean
 }
 
 class Output {
-  + mostra(frasi: List<FraseNonSense>): void
+  + show(sentences: List<NonsenseSentence>): void
 }
 
-Utente --> FraseInInput
-Utente --> GeneratoreFrasi
-FraseInInput --> AnalizzatoreFrasi
-AnalizzatoreFrasi --> Parola
-Dizionario --> Parola : contiene
-GeneratoreFrasi --> Dizionario
-GeneratoreFrasi --> FraseNonSense : genera
-FraseNonSense --> ModeratoreFrasi
-ModeratoreFrasi --> Output : mostra
-Utente --> Output : visualizza
+User --> InputSentence : insert
+User --> SentenceGenerator 
+InputSentence --> SentenceAnalyzer : passed to
+SentenceAnalyzer --> Word
+SentenceAnalyzer --> Dictionary : uses
+Dictionary --> Word : contains
+SentenceGenerator --> Dictionary : uses
+SentenceGenerator --> NonsenseSentence : generate
+SentenceGenerator --> SentenceModerator :uses 
+SentenceModerator --> NonsenseSentence : validates
+User --> Output 
+Output --> NonsenseSentence : displays
 @enduml
 ```
