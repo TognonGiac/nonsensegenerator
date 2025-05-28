@@ -5,33 +5,33 @@
 ```plantuml
 @startuml
 actor User
-participant UI
-participant "AnalizzatoreFrasi" as AF
-participant "Dizionario" as D
-participant "GeneratoreFrasi" as GF
-participant "ModeratoreFrasi" as MF
+participant "UserInterface" as UI
+participant "SentenceAnalyzer" as SA
+participant "Dictionary" as D
+participant "SentenceGenerator" as SG
+participant "SentenceModerator" as SM
 participant "Output" as O
 
-== Inserimento e analisi frase ==
-User -> UI : insertInitialSentence()
-UI -> AF : analizzaFrase(frase)
-AF -> D : salvaParole(parole)
+== Sentence insertion and analysis ==
+User -> UI : insertSentence()
+UI -> SA : analyzeSentence(sentence)
+SA -> D : saveWords(words)
 
-== Selezione numero di frasi ==
+== Sentence count selection ==
 User -> UI : selectNumberOfSentences(n)
 
-== Generazione frasi ==
-UI -> GF : generaFrasi(n, dizionario)
-GF -> D : getParole()
-GF -> GF : creaFrasiRandom()
+== Sentence generation ==
+UI -> SG : generateSentences(n, dictionary)
+SG -> D : getWords()
+SG -> SG : builtRandomSentences()
 
-== Controllo tossicità ==
-GF -> MF : controllaTossicità(frasi)
-MF -> MF : filtraFrasiSicure()
+== Toxicity check ==
+SG -> SM : analyzeToxicity(sentences)
+SM -> SM : extractSafeSentences()
 
-== Visualizzazione ==
-MF -> O : mostra(frasiSicure)
-User -> UI : visualizzaOutput()
+== Display ==
+SM -> O : show(safeSentences)
+User -> UI : viewSentences()
 @enduml
 ```
 
@@ -39,7 +39,7 @@ User -> UI : visualizzaOutput()
 # Internal Sequence Diagrams
 
 
-## Analisi frasi e salvataggio
+## Sentence Analysis & Word Saving
 
 ![InternalSequenceDiagram1.png](img/diagrams/InternalSequenceDiagram1.png)
 
@@ -61,7 +61,7 @@ end
 ```
 
 
-## Generazione di frasi nonsense
+## Nonsense Sentence Generation
 
 ![InternalSequenceDiagram2.png](img/diagrams/InternalSequenceDiagram2.png)
 
@@ -83,46 +83,46 @@ SentenceGenerator -> NonsenseSentence : finalize()
 ```
 
 
-## Controllo tossicità
+## Toxicity Check
 
 ![InternalSequenceDiagram3.png](img/diagrams/InternalSequenceDiagram3.png)
 
 ```plantuml
 @startuml
-title Internal SD – Controllo Tossicità
+title Internal Sequence Diagram – Toxicity Check
 
-participant FraseNonSense
-participant ModeratoreFrasi
+participant NonsenseSentence
+participant SentenceModerator
 participant GoogleAPI
 participant Output
 
-FraseNonSense -> ModeratoreFrasi : inviaFrasi()
-loop per ogni frase
-  ModeratoreFrasi -> GoogleAPI : isTossica(frase)
-  alt frase sicura
-    ModeratoreFrasi -> Output : mostra(frase)
-  else frase tossica
-    ModeratoreFrasi -> Output : mostraWarning()
+SentenceModerator -> NonsenseSentence : getSentences()
+loop for each sentence
+  SentenceModerator -> GoogleAPI : checkToxicity(sentence)
+  alt safe sentence
+    SentenceModerator -> Output : displaySentence(sentence)
+  else toxic sentence
+    SentenceModerator -> Output : displayWarning()
   end
 end
 @enduml
 ```
 
-## Azioni post-output: copia, salvataggio
+## Post-Output action : copy and save
 ![InternalSequenceDiagram4.png](img/diagrams/InternalSequenceDiagram4.png)
 
 ```plantuml
 @startuml
-title Internal SD – Azioni Post-Output
+title Internal Sequence Diagram – Post-Output Action
 
 participant Output
 participant Clipboard
 participant FileWriter
 
-== Copia frasi ==
-Output -> Clipboard : copia(frasi)
+== Copy Sentence ==
+Output -> Clipboard : copyToClipboard(sentences)
 
-== Salva su file ==
-Output -> FileWriter : salvaTXT(frasi)
+== Save to file ==
+Output -> FileWriter : saveToFile(sentences)
 @enduml
 ```
