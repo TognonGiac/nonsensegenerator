@@ -4,30 +4,31 @@
 
 ```plantuml
 @startuml
-object Utente
-object FraseInInput
-object FraseNonSense
-object Dizionario
-object Parola {
-tipo
+object User 
+object InputSentence
+object SentenceAnalyzer
+object Dictionary
+object Word {
+  type
 }
-object GeneratoreFrasi {
-NumeroFrasiOutput
+object SentenceGenerator {
+  outputSentenceCount
 }
-object AnalizzatoreFrasi
-object ModeratoreFrasi
+object NonsenseSentence
+object SentenceModerator
 object Output
 
-Utente "1"--> "1" FraseInInput : inserisce
-Utente "1" --> "1" GeneratoreFrasi : richiede generazione
-FraseInInput "1"--> "1" AnalizzatoreFrasi : viene analizzata
-Dizionario "1" --> "0..*" Parola : contiene
-GeneratoreFrasi  "1"--> "1" Dizionario : accede
-GeneratoreFrasi "1"--> "0..*" FraseNonSense : genera
-AnalizzatoreFrasi "1" --> "0..*" Parola : estrae
-Parola "1"--> "1" Dizionario : possibile inserimento
-FraseNonSense "1"--> "1" ModeratoreFrasi : analizzata
-ModeratoreFrasi "1"--> "1" Output : mostra
-Utente "1" --> "1" Output : visualizza
-@enduml 
+User "1" --> "1" InputSentence : inserts
+User --> SentenceGenerator : requests generation
+InputSentence "1" --> "1" SentenceAnalyzer : analyzed by
+SentenceAnalyzer --> Word : extracts
+SentenceAnalyzer --> Dictionary : accesses
+Dictionary "1" --> "0..*" Word : contains
+SentenceGenerator --> Dictionary : accesses
+SentenceGenerator "1" --> "0..*" NonsenseSentence : generates
+SentenceGenerator --> SentenceModerator : request validation
+SentenceModerator "1" --> "1" NonsenseSentence : validates
+Output "1" --> "1" NonsenseSentence : displays
+User "1" --> "1" Output : views
+@enduml
 ```
