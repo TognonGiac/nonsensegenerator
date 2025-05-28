@@ -45,17 +45,17 @@ User -> UI : visualizzaOutput()
 
 ```plantuml
 @startuml
-title Internal SD – Analisi Frase & Salvataggio Parole
+title Internal Sequence Diagram – Sentence Analysis & Word Saving
 
-participant FraseInInput
-participant AnalizzatoreFrasi
-participant Dizionario
-participant Parola
+participant InputSentence
+participant SentenceAnalyzer
+participant Dictionary
+participant Word
 
-FraseInInput -> AnalizzatoreFrasi : analizza()
-AnalizzatoreFrasi -> Parola : creaParole()
-loop per ogni parola
-  Parola -> Dizionario : salvaParola(parola)
+InputSentence -> SentenceAnalyzer : analyze()
+SentenceAnalyzer -> Word : extractWords()
+loop for each word 
+  Word -> Dictionary : saveWord(Word)
 end
 @enduml
 ```
