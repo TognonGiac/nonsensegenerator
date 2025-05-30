@@ -128,6 +128,7 @@ public class NonsenseService {
                     filtered.add("Sentence not shown due to its toxicity");
                 } else {
                     filtered.add(sentenceOut);
+                    OutputWriter.writeSentence(sentenceOut);
                 }
             } catch (Exception e) {
                 filtered.add("Error while checking toxicity");
