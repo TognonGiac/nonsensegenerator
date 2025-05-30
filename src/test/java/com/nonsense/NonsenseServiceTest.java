@@ -9,6 +9,9 @@ import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import com.nonsense.service.OutputWriter;
+
+
 public class NonsenseServiceTest {
 
     // Fake analyzer che ritorna parole controllate (tra cui "dies")
@@ -36,6 +39,8 @@ public class NonsenseServiceTest {
     @BeforeEach
     public void setUp() {
         service = new NonsenseService(new FakeSentenceAnalyzer(), new FakeToxicityChecker());
+        OutputWriter.ENABLED = false; // disabilita scrittura su file durante i test
+
 
         try {
             var field = NonsenseService.class.getDeclaredField("apiKey");
