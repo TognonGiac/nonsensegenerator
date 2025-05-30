@@ -25,7 +25,7 @@ Per utilizzare NONSENSE Generator si raccomanda di:
       - Su Linux/macOS:
           ./mvnw spring-boot:run
 
-         - Nota per macOS: se compare un errore di tipo *Permission denied*, esegui prima
+         - Nota per macOS: se compare un errore di tipo *Permission denied*, esegui prima -> 
            chmod +x mvnw
       - Su Windows (PowerShell o cmd):
           mvnw.cmd spring-boot:run
