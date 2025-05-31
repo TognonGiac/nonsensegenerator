@@ -143,7 +143,7 @@ public class NonsenseService {
     /**
     * Aggiorna un file con le nuove parole, assicurandosi di non avere duplicati.
     * 
-    * @param filePath    persorso del dile da aggiornare
+    * @param filePath    percorso del dile da aggiornare
     * @param newWords    lista di nuove parole da aggiungere al file
     * @throws IOExcpetion se il file non può essere letto o scritto
     */
