@@ -83,15 +83,17 @@ public class NonsenseService {
     @Value("${google.api.key}")
     private String apiKey;
 
-    /** 
+    /**
     * Genera frasi nonsense a partire da una frase di input fornita dall'utente.
     * <p> Questo metodo implementa il processo di generazione di una frase nonsense: </p>
     * <ol>
     *    <li><strong>Validazione:</strong> Verifica la presenza della chiave API</li>
     *    <li><strong>Analisi sintattica:</strong> Estrae nomi, verbi e aggettivi dalla frase</li>
-    *    <li><strong>Aggionamento dizionari:</strong> Aggiunge le nuove parole ai set globali</li>
+    *    <li><strong>Aggiornamento dizionari:</strong> Aggiunge le nuove parole ai set globali</li>
     *    <li><strong>Generazione:</strong> Genera frasi nonsense</li>
-    *    <li><strong>Controllo tossicità:</strong> Verifica e filtra le eventuali frasi tossiche</li>
+    *    <li><strong>Controllo tossicità:</strong> Verifica e filtra le eventuali frasi tossiche.
+    *        Le frasi non tossiche vengono salvate su file tramite 
+    *        {@link com.nonsense.service.OutputWriter#writeSentence(String)}</li>
     * </ol>
     *
     * @param sentence    frase in input da cui estrarre le componenti sintattiche
