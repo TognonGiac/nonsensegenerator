@@ -226,7 +226,7 @@
             <p>Il pattern Builder è applicato concettualmente nella composizione delle frasi all’interno di <code>NonsenseGenerator</code>, dove gli elementi (soggetto, verbo, complemento) vengono selezionati ed assemblati in modo incrementale e configurabile.</p>
             
             <h4>Factory</h4>
-            <p>La costruzione degli oggetti frase avviene in modo centralizzato all’interno del servizio. In forma implicita, la logica è coerente con il pattern.</p>
+            <p>La costruzione delle frasi avviene in modo centralizzato in <p>NonsenseService</p>, che funge da punto unico di creazione. Questo richiama il concetto di Factory Method, pur senza una classe factory dedicata.</p>
             
             <h4>Adapter</h4>
             <p>La classe <code>ToxicityChecker</code> rappresenta un Adapter rispetto alle API Google Cloud Natural Language. Fornisce un'interfaccia interna: <code>isToxic(String text)</code> che nasconde i dettagli di implementazione dell'API esterna e le sue complessità, semplificando l'uso da parte del sistema.</p>
