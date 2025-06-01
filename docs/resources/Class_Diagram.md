@@ -24,7 +24,6 @@ class Word {
 enum WordType {
   VERB
   NAME
-  ADVERB
   ADJECTIVE
 }
 
