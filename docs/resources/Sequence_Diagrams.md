@@ -23,7 +23,7 @@ User -> UI : selectNumberOfSentences(n)
 == Sentence generation ==
 UI -> SG : generateSentences(n, dictionary)
 SG -> D : getWords()
-SG -> SG : builtRandomSentences()
+SG -> SG : buildRandomSentences()
 
 == Toxicity check ==
 SG -> SM : analyzeToxicity(sentences)
